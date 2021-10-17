@@ -10,7 +10,10 @@ public class ValidateSubsequence {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Integer[] array1 = { 5, 1, 22, 25, 6, -1, 8, 10 };
+		Integer[] sequence1 = { 1, 6, -1, 10 };
+		
+		//System.out.println(isValidSubsequence(array1, sequence1));
 
 	}
 

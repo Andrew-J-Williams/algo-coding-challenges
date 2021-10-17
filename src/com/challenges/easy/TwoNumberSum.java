@@ -29,8 +29,27 @@ import java.util.Arrays;
 public class TwoNumberSum {
 
 	public static int[] twoNumberSum(int[] array, int targetSum) {
+		
+		int p1 = 0;
+		int p2 = array.length - 1;
+		int[] newarray = new int[2];
+		
+		Arrays.sort(array);
+		
+		while(p1 < p2) {
+			int sum = array[p1] + array[p2];
+			
+			if(sum < targetSum) {
+				p1++;
+			} else if (sum > targetSum) {
+				p2--;
+			} else {
+				newarray[0] = array[p1];
+				newarray[1] = array[p2];
+				break;
+			}
+		}
 
-		int[] newarray = {};
 
 		return newarray;
 	}
@@ -39,7 +58,7 @@ public class TwoNumberSum {
 		int[] array1 = { 3, 5, -4, 8, 11, 1, -1, 6 };
 		int targetSum1 = 10;
 
-		System.out.println(Arrays.asList(twoNumberSum(array1, targetSum1)));
+		System.out.println(Arrays.toString(twoNumberSum(array1, targetSum1)));
 
 	}
 

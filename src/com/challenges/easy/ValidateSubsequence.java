@@ -1,6 +1,7 @@
 package com.challenges.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -30,10 +31,14 @@ public class ValidateSubsequence {
 	}
 
 	public static void main(String[] args) {
-		List <Integer> array1 = new ArrayList();
-		List <Integer> sequence1 = new ArrayList();
 		
-		//System.out.println(isValidSubsequence(array1, sequence1));
+		Integer[] data1 = { 5, 1, 22, 25, 6, -1, 8, 10 };
+		Integer[] sub1 = { 1, 6, -1, 10 };
+		
+		List <Integer> array1 = Arrays.asList(data1);
+		List <Integer> sequence1 = Arrays.asList(sub1);
+		
+		System.out.println(isValidSubsequence(array1, sequence1));
 
 	}
 

@@ -21,17 +21,24 @@ public class SortedSquaredArray {
 	
 	public static int[] sortedSquaredArray(int[] array) {
 		
+		// 1. We define a new array of integers equal to the length of the array being passed in.
 		int[] squared = new int[array.length];
 		
+		// 2. We create a 'for' loop that will iterate over each element in the array passed in.
 		for(int i = 0; i < array.length; i++) {
+			
+			// 3. We create a variable equal to the value at index 'i' times itself, squaring it.
 			int square = array[i] * array[i];
+			
+			// 4. We then take the same index value in the array we created and set it equal to the squared value.
 			squared[i] = square;
 			
-			System.out.println(Arrays.toString(squared));
 		}
 		
+		// 5. After the loop completes and all squared values have been added, we sort the array using 'Arrays.sort'
 		Arrays.sort(squared);
 		
+		// 6. Finally, we return the new array, containing squared values in ascending order.
 	    return squared;
 	}
 

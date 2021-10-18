@@ -26,7 +26,21 @@ import java.util.List;
 public class ValidateSubsequence {
 
 	public static boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
-		// Write your code here.
+		
+		for(Integer x : array) {
+					
+			if(x == sequence.get(0)) {
+				sequence.remove(0);
+			} else {
+				continue;
+			}
+			
+			if(sequence.size() == 0) {
+				return true;
+			}
+			
+		}
+		
 		return false;
 	}
 
@@ -35,10 +49,17 @@ public class ValidateSubsequence {
 		Integer[] data1 = { 5, 1, 22, 25, 6, -1, 8, 10 };
 		Integer[] sub1 = { 1, 6, -1, 10 };
 		
-		List <Integer> array1 = Arrays.asList(data1);
-		List <Integer> sequence1 = Arrays.asList(sub1);
+		Integer[] data2 = { 5, 1, 22, 25, 6, -1, 8, 10 };
+		Integer[] sub2 = { 25 };
+		
+		ArrayList <Integer> array1 = new ArrayList(Arrays.asList(data1));
+		ArrayList <Integer> sequence1 = new ArrayList(Arrays.asList(sub1));
+		
+		ArrayList <Integer> array2 = new ArrayList(Arrays.asList(data2));
+		ArrayList <Integer> sequence2 = new ArrayList(Arrays.asList(sub2));
 		
 		System.out.println(isValidSubsequence(array1, sequence1));
+		System.out.println(isValidSubsequence(array2, sequence2));
 
 	}
 

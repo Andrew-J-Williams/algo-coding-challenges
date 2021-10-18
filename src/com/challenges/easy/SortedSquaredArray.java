@@ -20,8 +20,19 @@ import java.util.Arrays;
 public class SortedSquaredArray {
 	
 	public static int[] sortedSquaredArray(int[] array) {
-	    // Write your code here.
-	    return new int[] {};
+		
+		int[] squared = new int[array.length];
+		
+		for(int i = 0; i < array.length; i++) {
+			int square = array[i] * array[i];
+			squared[i] = square;
+			
+			System.out.println(Arrays.toString(squared));
+		}
+		
+		Arrays.sort(squared);
+		
+	    return squared;
 	}
 
 	public static void main(String[] args) {

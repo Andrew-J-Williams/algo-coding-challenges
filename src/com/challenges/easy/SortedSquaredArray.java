@@ -1,5 +1,7 @@
 package com.challenges.easy;
 
+import java.util.Arrays;
+
 /*
  * 
 	Sorted Square Array
@@ -16,10 +18,18 @@ package com.challenges.easy;
  */
 
 public class SortedSquaredArray {
+	
+	public static int[] sortedSquaredArray(int[] array) {
+	    // Write your code here.
+	    return new int[] {};
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] array1 = {1, 2, 3, 5, 6, 8, 9};
+		int[] array2 = {-10, -5, 0, 5, 10};
+		
+		System.out.println(Arrays.toString(sortedSquaredArray(array1)));
+		System.out.println(Arrays.toString(sortedSquaredArray(array2)));
 	}
 
 }

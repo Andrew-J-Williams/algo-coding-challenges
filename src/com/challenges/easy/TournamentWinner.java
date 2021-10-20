@@ -1,6 +1,7 @@
 package com.challenges.easy;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 /*
  * 
@@ -37,8 +38,46 @@ import java.util.ArrayList;
 public class TournamentWinner {
 
 	public static String tournamentWinner(ArrayList<ArrayList<String>> competitions, ArrayList<Integer> results) {
-		// Write your code here.
-		return "TEST";
+
+		Hashtable<String, Integer> winners = new Hashtable<String, Integer>();
+		String highestScorer = "";
+		Integer highScore = 0;
+		
+		for(int i = 0; i < competitions.size(); i++) {
+				
+			if(results.get(i) == 1) {
+				if(winners.containsKey(competitions.get(i).get(0))) {
+					int score = winners.get(competitions.get(i).get(0));
+					int newScore = score + 3;
+					winners.replace(competitions.get(i).get(0), score, newScore);
+				} else {
+					winners.put(competitions.get(i).get(0), 3);
+				}
+				
+				if(winners.get(competitions.get(i).get(0)) > highScore) {
+					highestScorer = competitions.get(i).get(0);
+					highScore = winners.get(competitions.get(i).get(0));
+				}
+				
+			} else {
+				if(winners.containsKey(competitions.get(i).get(1))){
+					int score = winners.get(competitions.get(i).get(1));
+					int newScore = score + 3;
+					winners.replace(competitions.get(i).get(1), score, newScore);
+				} else {
+					winners.put(competitions.get(i).get(1), 3);
+				}
+				
+				if(winners.get(competitions.get(i).get(1)) > highScore) {
+					highestScorer = competitions.get(i).get(1);
+					highScore = winners.get(competitions.get(i).get(1));
+				}
+			}
+			
+			
+		}
+	
+		return highestScorer;
 	}
 
 	public static void main(String[] args) {

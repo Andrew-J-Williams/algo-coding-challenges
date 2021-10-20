@@ -1,5 +1,7 @@
 package com.challenges.easy;
 
+import java.util.Arrays;
+
 /*
  * 
 	Non-Constructible Change
@@ -21,8 +23,23 @@ package com.challenges.easy;
 public class NonConstructibleChange {
 
 	public static int nonConstructibleChange(int[] coins) {
-		// Write your code here.
-		return -1;
+
+		// 1. We sort the values in our coins array from smallest to greatest.
+		Arrays.sort(coins);
+		
+		int target = 0;
+		
+		for(int value : coins) {
+			System.out.println("Current Value: " + value);
+			
+			if(value > target + 1) {
+				return target + 1;
+			}
+			
+			target += value;
+		}
+		
+		return target + 1;
 	}
 
 	public static void main(String[] args) {

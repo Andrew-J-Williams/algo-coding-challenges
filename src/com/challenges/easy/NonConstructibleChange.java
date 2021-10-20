@@ -27,18 +27,24 @@ public class NonConstructibleChange {
 		// 1. We sort the values in our coins array from smallest to greatest.
 		Arrays.sort(coins);
 		
+		// 2. We create a variable that will represent our target value and set it equal to 0.
 		int target = 0;
 		
+		// 3. Create a 'for' loop that will iterate over each value in the coins array.
 		for(int value : coins) {
-			System.out.println("Current Value: " + value);
-			
+		
+			// 4. If the current value of the coin is greater than the target value plus 1...
 			if(value > target + 1) {
+				
+				// ... then we return the target value plus 1 since the coins in the array cannot add up to it.
 				return target + 1;
 			}
 			
+			// 5. If the current value is less than or equal to the target, we simply add that value to the target and continue to the next value in the array.
 			target += value;
 		}
 		
+		// 6. If we make it through all values without returning the target, we return the final target value plus 1.
 		return target + 1;
 	}
 

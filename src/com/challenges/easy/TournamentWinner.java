@@ -39,44 +39,61 @@ public class TournamentWinner {
 
 	public static String tournamentWinner(ArrayList<ArrayList<String>> competitions, ArrayList<Integer> results) {
 
+		// 1. We create 3 variables: (1) A Hashtable to hold our winners and their scores, (2) the highest scoring team, and (3) the highest score. 
 		Hashtable<String, Integer> winners = new Hashtable<String, Integer>();
 		String highestScorer = "";
 		Integer highScore = 0;
 		
+		
+		// 2. We create a 'for' loop to iterate over our arraylist of competitions, with each value of 'i' representing a single round of competition.
 		for(int i = 0; i < competitions.size(); i++) {
-				
+			
+			// 3. We create a variable to hold the current winner at index 'i'
+			String winner = "";
+			
+			// 4. If the home team (1) won the round at 'i' in the 'results' arraylist...
 			if(results.get(i) == 1) {
-				if(winners.containsKey(competitions.get(i).get(0))) {
-					int score = winners.get(competitions.get(i).get(0));
-					int newScore = score + 3;
-					winners.replace(competitions.get(i).get(0), score, newScore);
-				} else {
-					winners.put(competitions.get(i).get(0), 3);
-				}
 				
-				if(winners.get(competitions.get(i).get(0)) > highScore) {
-					highestScorer = competitions.get(i).get(0);
-					highScore = winners.get(competitions.get(i).get(0));
-				}
-				
+				// ...then we set the winner equal to the home team.
+				winner = competitions.get(i).get(0);
+			
+			// 5. If the winning team was not the home team...	
 			} else {
-				if(winners.containsKey(competitions.get(i).get(1))){
-					int score = winners.get(competitions.get(i).get(1));
-					int newScore = score + 3;
-					winners.replace(competitions.get(i).get(1), score, newScore);
-				} else {
-					winners.put(competitions.get(i).get(1), 3);
-				}
 				
-				if(winners.get(competitions.get(i).get(1)) > highScore) {
-					highestScorer = competitions.get(i).get(1);
-					highScore = winners.get(competitions.get(i).get(1));
-				}
+				// ...then we repeat the same process, just with the away team.
+				winner = competitions.get(i).get(1);
 			}
 			
+			// 6. We then check our hashtable to see if that winner has already been entered in as a key. If it has...
+			if(winners.containsKey(winner)) {
+				
+				// ...we create a variable to store the score, which would be the value of the key...
+				int score = winners.get(winner);
+				
+				//...then create a variable that adds 3 to that score (since each winner receives 3 points)...
+				int newScore = score + 3;
+				
+				//...and replace the old score value with the updated score in the hashtable.
+				winners.replace(winner, score, newScore);
+				
+			// 7. If the home team does not exist in our hashtable...
+			} else {
+				
+				//...then we simply add them in using 'put'.
+				winners.put(winner, 3);
+			}
+			
+			// 8. We then check and see if the score associated with the winning team is higher than the current 'highScore'. If it is...
+			if(winners.get(winner) > highScore) {
+				
+				// ...then we update both the name of the highest scorer as well as the high score.
+				highestScorer = winner;
+				highScore = winners.get(winner);
+			}
 			
 		}
 	
+		// 9. Once the loop iterates through all the competitions and results, we simply return our highest scorer.
 		return highestScorer;
 	}
 

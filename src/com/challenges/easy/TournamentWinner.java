@@ -1,5 +1,7 @@
 package com.challenges.easy;
 
+import java.util.ArrayList;
+
 /*
  * 
 	Tournament Winner
@@ -34,9 +36,35 @@ package com.challenges.easy;
 
 public class TournamentWinner {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static String tournamentWinner(ArrayList<ArrayList<String>> competitions, ArrayList<Integer> results) {
+		// Write your code here.
+		return "TEST";
+	}
 
+	public static void main(String[] args) {
+		ArrayList<ArrayList<String>> competitions1 = new ArrayList<>();
+		ArrayList<Integer> results1 = new ArrayList<>();
+		ArrayList<String> comp1 = new ArrayList<>();
+		ArrayList<String> comp2 = new ArrayList<>();
+		ArrayList<String> comp3 = new ArrayList<>();
+		
+		comp1.add("HTML");
+		comp1.add("C#");
+		comp2.add("C#");
+		comp2.add("Python");
+		comp3.add("Python");
+		comp3.add("HTML");
+		
+		results1.add(0);
+		results1.add(0);
+		results1.add(1);
+		
+		competitions1.add(comp1);
+		competitions1.add(comp2);
+		competitions1.add(comp3);
+		
+		System.out.println(tournamentWinner(competitions1, results1));
+		
 	}
 
 }

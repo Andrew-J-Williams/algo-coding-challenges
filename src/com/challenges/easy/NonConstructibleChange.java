@@ -20,8 +20,17 @@ package com.challenges.easy;
 
 public class NonConstructibleChange {
 
+	public static int nonConstructibleChange(int[] coins) {
+		// Write your code here.
+		return -1;
+	}
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] coins1 = { 5, 7, 1, 1, 2, 3, 22 };
+		int[] coins2 = { 1, 1, 1, 1, 1};
+		
+		System.out.println(nonConstructibleChange(coins1));
+		System.out.println(nonConstructibleChange(coins2));
 
 	}
 

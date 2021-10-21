@@ -55,10 +55,16 @@ public class ClosestValueInBST {
 			// ...then we return our helper function again, this time with the left node becoming the root value.
 			return findClosestValueInBstHelper(tree.left, target, closest);
 			
-		// 5.	
+		// 5. If instead the target value is greater than the node's value and the right node is not null (meaning our target value is greater than the root)...	
 		} else if (target > tree.value && tree.right != null) {
+			
+			// ...then we return our helper function with the right node becoming the root value. We eliminate all options on the left branch from the root node.
 			return findClosestValueInBstHelper(tree.right, target, closest);
+			
+		// 6. If we find that the target value is equal to the node value or there are no left or right branches to check further...
 		} else {
+			
+			// ...then we simply return the closest value.
 			return closest;
 		}
 		

@@ -15,13 +15,16 @@ import java.util.List;
 	
 	Sample Input:
 	
-			tree = 10
+			tree =  1
 				 /    \
-			    5      15
+			    2      3
 			   /  \   /  \
-			  2    5 13   22
-			 /        \
-			1         14
+			  4    5 6    7
+			 / \  /
+			8   9 10
+			
+	Sample Output:
+	[15, 16, 18, 10, 11]
  * 
  */
 

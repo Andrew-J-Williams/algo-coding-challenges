@@ -41,29 +41,39 @@ public class BranchSums {
 			this.right = null;
 		}
 	}
-
+	
+	// 1. We create our recursive function that will call itself in order to work through all the nodes in the tree. It takes in the current node, the running sum, and an array of sums.
 	public static void calculateBranchSums(BinaryTree node, int runningSum, List<Integer> sums) {
 
+		// 2. If the value of the node is null, we simply return the function. This will simply return back our array of sums.
 		if (node == null) {
 			return;
 		}
-
+		
+		// 3. We create a variable to hold the value of our running sum plus the value of the current node.
 		int newRunningSum = runningSum + node.value;
 
+		// 4. If this node is a leaf node, meaning it is the end of the branch, we add the sum to the sums array and return the function, effectively accounting for that branch sum.
 		if (node.left == null && node.right == null) {
 			sums.add(newRunningSum);
 			return;
 		}
 
+		// 5. If there is additional nodes, we account for either a left or right by calling our recursive function on both, repeating the process until all leaf nodes are accounted for.
 		calculateBranchSums(node.left, newRunningSum, sums);
 		calculateBranchSums(node.right, newRunningSum, sums);
 	}
 
+	// 6. Within the main function, we take in the root of a tree...
 	public static List<Integer> branchSums(BinaryTree root) {
 
+		// ...define an ArrayList called sums that will store all the branch sums...
 		List<Integer> sums = new ArrayList<Integer>();
+		
+		// ...run our recursive function with our initial values...
 		calculateBranchSums(root, 0, sums);
 
+		// ...and finally we return our sums array after the recursive function has finished calculating all the branch sums. 
 		return sums;
 	}
 

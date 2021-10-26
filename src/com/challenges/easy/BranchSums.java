@@ -44,7 +44,7 @@ public class BranchSums {
 
 	public static List<Integer> branchSums(BinaryTree root) {
 		
-		System.out.println(root);
+		System.out.println(root.value);
 		
 		return new ArrayList<Integer>();
 	}

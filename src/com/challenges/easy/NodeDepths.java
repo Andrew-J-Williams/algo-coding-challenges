@@ -1,5 +1,8 @@
 package com.challenges.easy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * 
 	Node Depths
@@ -39,18 +42,30 @@ public class NodeDepths {
 		}
 	}
 	
-	public static void calculateNodeDepths(BinaryTree node, int depth, int runningSum) {
+	public static void calculateNodeDepths(BinaryTree node, int depth, List<Integer> runningSum) {
 		if(node == null) {
 			return;
 		}
+				
+		runningSum.add(depth);
 		
+		int newDepth = depth + 1;
 		
+		System.out.println(runningSum);
+		
+		calculateNodeDepths(node.left, newDepth, runningSum);
+		calculateNodeDepths(node.right, newDepth, runningSum);
 	}
 
 	public static int nodeDepths(BinaryTree root) {
+		List<Integer> sums = new ArrayList<>();
 		int sum = 0;
 		
+		calculateNodeDepths(root, 0, sums);
 		
+		for(int x : sums) {
+			sum += x;
+		}
 		
 		return sum;
 	}

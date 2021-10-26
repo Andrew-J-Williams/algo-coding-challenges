@@ -42,11 +42,29 @@ public class BranchSums {
 		}
 	}
 
+	public static void calculateBranchSums(BinaryTree node, int runningSum, List<Integer> sums) {
+
+		if (node == null) {
+			return;
+		}
+
+		int newRunningSum = runningSum + node.value;
+
+		if (node.left == null && node.right == null) {
+			sums.add(newRunningSum);
+			return;
+		}
+
+		calculateBranchSums(node.left, newRunningSum, sums);
+		calculateBranchSums(node.right, newRunningSum, sums);
+	}
+
 	public static List<Integer> branchSums(BinaryTree root) {
-		
-		System.out.println(root.value);
-		
-		return new ArrayList<Integer>();
+
+		List<Integer> sums = new ArrayList<Integer>();
+		calculateBranchSums(root, 0, sums);
+
+		return sums;
 	}
 
 	public static void main(String[] args) {
@@ -61,7 +79,7 @@ public class BranchSums {
 		BinaryTree n7 = new BinaryTree(8);
 		BinaryTree n8 = new BinaryTree(9);
 		BinaryTree n9 = new BinaryTree(10);
-		
+
 		root.left = n1;
 		root.right = n2;
 		root.left.left = n3;
@@ -71,8 +89,7 @@ public class BranchSums {
 		root.left.left.left = n7;
 		root.left.left.right = n8;
 		root.left.right.left = n9;
-		
-		
+
 		System.out.println(branchSums(root));
 	}
 

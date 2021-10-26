@@ -9,6 +9,19 @@ package com.challenges.easy;
 	Write a function that takes in a Binary Tree and returns the sums of its nodes' depths.
 	
 	Each BinaryTree has an integer value, a left child node, and a right child node. Children nodes can either be BinaryTree nodes themselves or equal to None/null.
+	
+	Sample Input:
+	
+			tree =  1
+				 /    \
+			    2      3
+			   /  \   /  \
+			  4    5 6    7
+			 / \  
+			8   9 
+			
+	Sample Output:
+	16
  * 
  */
 
@@ -27,6 +40,10 @@ public class NodeDepths {
 	}
 	
 	public static void calculateNodeDepths(BinaryTree node, int depth, int runningSum) {
+		if(node == null) {
+			return;
+		}
+		
 		
 	}
 

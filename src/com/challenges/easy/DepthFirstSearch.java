@@ -44,7 +44,12 @@ public class DepthFirstSearch {
 		}
 
 		public List<String> depthFirstSearch(List<String> array) {
-			// Write your code here.
+			array.add(this.name);
+
+			for (int i = 0; i < children.size(); i++) {
+				children.get(i).depthFirstSearch(array);
+			}
+
 			return array;
 		}
 

@@ -30,7 +30,6 @@ public class NodeDepths {
 		BinaryTree n6 = new BinaryTree(7);
 		BinaryTree n7 = new BinaryTree(8);
 		BinaryTree n8 = new BinaryTree(9);
-		BinaryTree n9 = new BinaryTree(10);
 
 		root.left = n1;
 		root.right = n2;
@@ -40,7 +39,8 @@ public class NodeDepths {
 		root.right.right = n6;
 		root.left.left.left = n7;
 		root.left.left.right = n8;
-		root.left.right.left = n9;
+		
+		System.out.println(nodeDepths(root));
 	}
 
 }

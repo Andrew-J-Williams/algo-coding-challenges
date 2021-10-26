@@ -25,10 +25,17 @@ public class NodeDepths {
 			this.right = null;
 		}
 	}
+	
+	public static void calculateNodeDepths(BinaryTree node, int depth, int runningSum) {
+		
+	}
 
 	public static int nodeDepths(BinaryTree root) {
-		// Write your code here.
-		return -1;
+		int sum = 0;
+		
+		
+		
+		return sum;
 	}
 
 	public static void main(String[] args) {

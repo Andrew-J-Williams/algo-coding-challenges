@@ -1,5 +1,10 @@
 package com.challenges.easy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /*
  * 
 	Minimum Waiting Time
@@ -24,12 +29,31 @@ package com.challenges.easy;
 public class MinimumWaitingTime {
 
 	public static int minimumWaitingTime(int[] queries) {
-		// Write your code here.
-		return -1;
+		Arrays.sort(queries);
+		int runningTotal = 0;
+		List<Integer> nums = new ArrayList<>();
+		
+		for(int i = 0; i < queries.length; i++) {
+			if(i == 0) {
+				runningTotal = 0;
+			} else {
+				runningTotal = runningTotal + queries[i-1];
+			}
+			nums.add(runningTotal);
+			System.out.println(nums);
+		}
+		
+		runningTotal = 0;
+		for(Integer x : nums) {
+			runningTotal += x;
+		}
+		
+		return runningTotal;
 	}
 
 	public static void main(String[] args) {
 		int[] data1 = { 3, 2, 1, 2, 6 };
+		int[] data2 = { 5, 1, 4 };
 		
 		System.out.println(minimumWaitingTime(data1));
 	}

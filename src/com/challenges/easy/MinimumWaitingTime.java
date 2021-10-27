@@ -29,16 +29,25 @@ import java.util.List;
 public class MinimumWaitingTime {
 
 	public static int minimumWaitingTime(int[] queries) {
+		
+		// 1. We sort our queries array from small to large values.
 		Arrays.sort(queries);
 
+		// 2. We create two variables: one that will hold the previous value and one to hold the running sum.
 		int previousVal = 0;
 		int sum = 0;
 
+		// 3. We create a 'for' loop that will iterate over every element in the array minus the very last one. For each element...
 		for (int i = 0; i < queries.length - 1; i++) {
+			
+			// ...we add to the previous value and then...
 			previousVal += queries[i];
+			
+			// ...add the resulting value to our running sum.
 			sum += previousVal;
 		}
 
+		// 4. Once the loop has completed, we return the sum.
 		return sum;
 	}
 

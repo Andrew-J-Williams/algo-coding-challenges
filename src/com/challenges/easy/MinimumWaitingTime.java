@@ -16,12 +16,17 @@ package com.challenges.easy;
 	[ 3, 2, 1, 2, 6 ]
 	
 	Sample Output:
-	16
+	17
 	
  * 
  */
 
 public class MinimumWaitingTime {
+
+	public int minimumWaitingTime(int[] queries) {
+		// Write your code here.
+		return -1;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

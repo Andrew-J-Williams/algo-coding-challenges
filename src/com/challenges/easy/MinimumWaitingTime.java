@@ -23,14 +23,15 @@ package com.challenges.easy;
 
 public class MinimumWaitingTime {
 
-	public int minimumWaitingTime(int[] queries) {
+	public static int minimumWaitingTime(int[] queries) {
 		// Write your code here.
 		return -1;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] data1 = { 3, 2, 1, 2, 6 };
+		
+		System.out.println(minimumWaitingTime(data1));
 	}
 
 }

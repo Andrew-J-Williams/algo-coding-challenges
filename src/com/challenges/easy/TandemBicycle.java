@@ -34,37 +34,58 @@ public class TandemBicycle {
 
 	public static int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
 	    
+		// 1. We sort both arrays in ascending order. 
 		Arrays.sort(redShirtSpeeds);
 		Arrays.sort(blueShirtSpeeds);
 		
+		
+		// 2. We check and see if 'fastest' is set to 'false', if so...
 		if(!fastest) {
+			
+			// ...we run our helper method that reverses the order of the redShirtSpeeds array (see logic for helper below).
+			// If we are trying to find the minimum, we directly compare each index value in both arrays to get the greater of the two.
 			reverseArrayInPlace(redShirtSpeeds);
 		}
 		
+		// 3. We create a variable for our total speed and set it equal to 0.
 		int speedSum = 0;
 		
+		// 4. We create a 'for' loop to iterate over every element in both the red and blue rider arrays.
 		for(int i = 0; i < redShirtSpeeds.length; i++) {
 			
+			// 5. We create variables to hold the value of of the red rider and one for the blue rider. Each acts as a pointer, each moving closer to each other.
 			int redRider = redShirtSpeeds[i];
 			int blueRider = blueShirtSpeeds[blueShirtSpeeds.length - i - 1];
 			
+			// 6. We compare the rider's speeds and add the max of the two to our sum.
 			speedSum += Math.max(redRider, blueRider);
 			
 		}
 		
+		// 7. Once the loop has completed, we return our final speed sum.
 		return speedSum;
 	}
 	
+	// 8. In our helper method, we accept the parameter of an integer array.
 	public static void reverseArrayInPlace(int[] array) {
+		
+		// 9. We define variables for the start and ending indexes of the array.
 		int start = 0;
 		int end = array.length - 1;
 		
+		// 10. While the start index is less than the end index...
 		while(start < end) {
 			
+			// ...we define a variable to store the start index value...
 			int temp = array[start];
+			
+			// ...we set a new value our start index equal to our end index value...
 			array[start] = array[end];
+			
+			// ...and set our end index value equal to the original start index value stored in 'temp'.
 			array[end] = temp;
 			
+			// 11. Finally, we increment start by 1 and decrement end by 1.
 			start++;
 			end--;
 			

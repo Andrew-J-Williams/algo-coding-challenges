@@ -37,58 +37,22 @@ public class TandemBicycle {
 		Arrays.sort(redShirtSpeeds);
 		Arrays.sort(blueShirtSpeeds);
 		
-		int maxSpeed = 0;
-		int minSpeed = 0;
+		if(!fastest) {
+			reverseArrayInPlace(redShirtSpeeds);
+		}
 		
-		int start = 0;
-		int end = redShirtSpeeds.length - 1;
+		int speedSum = 0;
 		
-		while(start <= end) {
-	
-			if(start == end) {
-				if(redShirtSpeeds[end] > blueShirtSpeeds[start]) {
-					maxSpeed += redShirtSpeeds[end];
-					minSpeed += redShirtSpeeds[end];
-				} else {
-					maxSpeed += blueShirtSpeeds[start];
-					minSpeed += blueShirtSpeeds[start];
-				}
-			} else {
-				if(redShirtSpeeds[end] > blueShirtSpeeds[start]) {
-					maxSpeed += redShirtSpeeds[end];
-				} else {
-					maxSpeed += blueShirtSpeeds[start];
-				}
-				
-				if(blueShirtSpeeds[end] > redShirtSpeeds[start]) {
-					maxSpeed += blueShirtSpeeds[end];
-				} else {
-					maxSpeed += redShirtSpeeds[start];
-				}
-					
-				if(redShirtSpeeds[start] > blueShirtSpeeds[start]) {
-					minSpeed += redShirtSpeeds[start];
-				} else {
-					minSpeed += blueShirtSpeeds[start];
-				}
-				
-				if(redShirtSpeeds[end] > blueShirtSpeeds[end]) {
-					minSpeed += redShirtSpeeds[end];
-				} else {
-					minSpeed += blueShirtSpeeds[end];
-				}
-			}
+		for(int i = 0; i < redShirtSpeeds.length; i++) {
 			
-			start++;
-			end--;
+			int redRider = redShirtSpeeds[i];
+			int blueRider = blueShirtSpeeds[blueShirtSpeeds.length - i - 1];
+			
+			speedSum += Math.max(redRider, blueRider);
+			
 		}
 		
-		if(fastest == true) {
-			return maxSpeed;
-		} else {
-			return minSpeed;
-		}
-		
+		return speedSum;
 	}
 	
 	public static void reverseArrayInPlace(int[] array) {
@@ -100,6 +64,7 @@ public class TandemBicycle {
 			int temp = array[start];
 			array[start] = array[end];
 			array[end] = temp;
+			
 			start++;
 			end--;
 			

@@ -91,6 +91,21 @@ public class TandemBicycle {
 		
 	}
 	
+	public static void reverseArrayInPlace(int[] array) {
+		int start = 0;
+		int end = array.length - 1;
+		
+		while(start < end) {
+			
+			int temp = array[start];
+			array[start] = array[end];
+			array[end] = temp;
+			start++;
+			end--;
+			
+		}
+	}
+	
 	public static void main(String[] args) {
 		int[] redShirts1 = { 1, 1, 1, 1, 3, 3, 3, 3, 5, 7 };
 		int[] blueShirts1 = { 1, 1, 1, 1, 2, 2, 2, 2, 9, 11 };

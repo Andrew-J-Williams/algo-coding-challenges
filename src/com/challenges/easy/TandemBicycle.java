@@ -1,6 +1,7 @@
 package com.challenges.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
  * 
@@ -32,13 +33,67 @@ import java.util.ArrayList;
 public class TandemBicycle {
 
 	public static int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
-	    // Write your code here.
-	    return -1;
+	    
+		Arrays.sort(redShirtSpeeds);
+		Arrays.sort(blueShirtSpeeds);
+		
+		int maxSpeed = 0;
+		int minSpeed = 0;
+		
+		int start = 0;
+		int end = redShirtSpeeds.length - 1;
+		
+		while(start <= end) {
+	
+			if(start == end) {
+				if(redShirtSpeeds[end] > blueShirtSpeeds[start]) {
+					maxSpeed += redShirtSpeeds[end];
+					minSpeed += redShirtSpeeds[end];
+				} else {
+					maxSpeed += blueShirtSpeeds[start];
+					minSpeed += blueShirtSpeeds[start];
+				}
+			} else {
+				if(redShirtSpeeds[end] > blueShirtSpeeds[start]) {
+					maxSpeed += redShirtSpeeds[end];
+				} else {
+					maxSpeed += blueShirtSpeeds[start];
+				}
+				
+				if(blueShirtSpeeds[end] > redShirtSpeeds[start]) {
+					maxSpeed += blueShirtSpeeds[end];
+				} else {
+					maxSpeed += redShirtSpeeds[start];
+				}
+					
+				if(redShirtSpeeds[start] > blueShirtSpeeds[start]) {
+					minSpeed += redShirtSpeeds[start];
+				} else {
+					minSpeed += blueShirtSpeeds[start];
+				}
+				
+				if(redShirtSpeeds[end] > blueShirtSpeeds[end]) {
+					minSpeed += redShirtSpeeds[end];
+				} else {
+					minSpeed += blueShirtSpeeds[end];
+				}
+			}
+			
+			start++;
+			end--;
+		}
+		
+		if(fastest == true) {
+			return maxSpeed;
+		} else {
+			return minSpeed;
+		}
+		
 	}
 	
 	public static void main(String[] args) {
-		int[] redShirts1 = { 5, 5, 3, 9, 2 };
-		int[] blueShirts1 = { 3, 6, 7, 2, 1 };
+		int[] redShirts1 = { 1, 1, 1, 1, 3, 3, 3, 3, 5, 7 };
+		int[] blueShirts1 = { 1, 1, 1, 1, 2, 2, 2, 2, 9, 11 };
 		
 
 		System.out.println(tandemBicycle(redShirts1, blueShirts1, true));

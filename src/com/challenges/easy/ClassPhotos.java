@@ -34,19 +34,22 @@ public class ClassPhotos {
 
 	public static boolean classPhotos(ArrayList<Integer> redShirtHeights, ArrayList<Integer> blueShirtHeights) {
 		
+		// 1. We sort both ArrayLists in ascending order.
 		Collections.sort(redShirtHeights);
 		Collections.sort(blueShirtHeights);
 		
+		// 2. We create variables to get the max value for the red shirt students and the blue shirt students.
 		int maxRed = redShirtHeights.get(redShirtHeights.size()-1);
 		int maxBlue = blueShirtHeights.get(blueShirtHeights.size()-1);
+		
+		// 3. We create two ArrayLists that will represent our front row and back row with blue shirts. We don't set them equal to anything initially.
 		ArrayList<Integer> frontRow;
 		ArrayList<Integer> backRow;
 		
-		System.out.println("Red Max Value: " + maxRed);
-		System.out.println("Blue Max Value: " + maxBlue);
-		
+		// 4. We create a variable that will hold the highest overall height between red and blue, determined using 'Math.max'.
 		int maxOverall = Math.max(maxRed, maxBlue);
 		
+		// 5. We determine which students ArrayList contains that max value. Based on that information, we assigned red and blue shirts to either the front row or back row.
 		if(maxRed == maxOverall) {
 			frontRow = blueShirtHeights;
 			backRow = redShirtHeights;
@@ -55,12 +58,18 @@ public class ClassPhotos {
 			backRow = blueShirtHeights;
 		}
 		
+		// 6. We create a 'for' loop to iterate over both ArrayLists in order to compare the heights at the given index.
 		for(int i = 0; i < redShirtHeights.size(); i++) {
+			
+			// 7. If the height in the front row is greater than or equal to the height in the back row...
 			if(frontRow.get(i) >= backRow.get(i)) {
+				
+				// ...then we return false is each student in the back row must be taller than the student directly in front of them in the front row.
 				return false;
 			}
 		}
 		
+		// 7. If all back row heights are greater than the front row heights, then we return true, satisfying the conditions in the prompt.
 		return true;
 	}
 

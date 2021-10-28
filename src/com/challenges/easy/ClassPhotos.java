@@ -39,8 +39,29 @@ public class ClassPhotos {
 		
 		int maxRed = redShirtHeights.get(redShirtHeights.size()-1);
 		int maxBlue = blueShirtHeights.get(blueShirtHeights.size()-1);
+		ArrayList<Integer> frontRow;
+		ArrayList<Integer> backRow;
 		
-		return false;
+		System.out.println("Red Max Value: " + maxRed);
+		System.out.println("Blue Max Value: " + maxBlue);
+		
+		int maxOverall = Math.max(maxRed, maxBlue);
+		
+		if(maxRed == maxOverall) {
+			frontRow = blueShirtHeights;
+			backRow = redShirtHeights;
+		} else {
+			frontRow = redShirtHeights;
+			backRow = blueShirtHeights;
+		}
+		
+		for(int i = 0; i < redShirtHeights.size(); i++) {
+			if(frontRow.get(i) >= backRow.get(i)) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 	public static void main(String[] args) {

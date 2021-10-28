@@ -1,6 +1,8 @@
 package com.challenges.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 /*
  * 
@@ -31,7 +33,13 @@ import java.util.ArrayList;
 public class ClassPhotos {
 
 	public static boolean classPhotos(ArrayList<Integer> redShirtHeights, ArrayList<Integer> blueShirtHeights) {
-		// Write your code here.
+		
+		Collections.sort(redShirtHeights);
+		Collections.sort(blueShirtHeights);
+		
+		int maxRed = redShirtHeights.get(redShirtHeights.size()-1);
+		int maxBlue = blueShirtHeights.get(blueShirtHeights.size()-1);
+		
 		return false;
 	}
 

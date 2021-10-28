@@ -19,7 +19,12 @@ import java.util.ArrayList;
 	
 	Note: You can assume that each class contains at least 2 students.
 	
+	Sample Input:
+	redShirtHeights = [ 5, 8, 1, 3, 4 ];
+	blueShirtHeights = [ 6, 9, 2, 4, 5 ];
 	
+	Sample Output:
+	true
  * 
  */
 

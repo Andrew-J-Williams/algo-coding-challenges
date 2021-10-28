@@ -1,5 +1,7 @@
 package com.challenges.easy;
 
+import java.util.ArrayList;
+
 /*
  * 
 	Tandem Bicycle
@@ -29,14 +31,18 @@ package com.challenges.easy;
 
 public class TandemBicycle {
 
-	public int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
+	public static int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
 	    // Write your code here.
 	    return -1;
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] redShirts1 = { 5, 5, 3, 9, 2 };
+		int[] blueShirts1 = { 3, 6, 7, 2, 1 };
+		
 
+		System.out.println(tandemBicycle(redShirts1, blueShirts1, true));
+		
 	}
 
 }

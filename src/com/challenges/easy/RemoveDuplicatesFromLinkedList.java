@@ -37,6 +37,16 @@ public class RemoveDuplicatesFromLinkedList {
 			current = nextNode;
 		}
 		
+		LinkedList cur = linkedList;
+		
+		while(cur != null) {
+					
+			System.out.println(cur.value);
+			
+			LinkedList nextNode = cur.next;
+			cur = nextNode;
+		}
+		
 		// 8. Finally, once the loop finishes iterating over every node, we return our updated LinkedList, now with no duplicate values.
 		return linkedList;
 	}

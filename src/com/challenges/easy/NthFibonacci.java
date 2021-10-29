@@ -22,17 +22,30 @@ package com.challenges.easy;
 public class NthFibonacci {
 
 	public static int getNthFib(int n) {
+		
+		// 1. We check and see if n is equal to 2, if it is...
 		if (n == 2){
+			
+			// ...we return 1 since it's the 2nd number in the fibonacci sequence.
 			return 1;
+			
+		// 2. Otherwise, if n is equal to 1...	
 		} else if (n == 1){
+			
+			// ...then we return 0 since it is the first number in the fibonacci sequence.
 			return 0;
+		
+		// 3. If n is equal to any other number...
 		} else {
+			
+			// ...we return the sum of getNthFib n - 1 and n - 2. This will get the two previous fibonacci numbers before n in the sequence and add them together (brilliant!).
+			// So for example, if n = 6, then we will find fib(6 - 1) + fib(6 - 2) = fib(5) + fib(4) = 3 + 2 = 5!
 			return getNthFib(n - 1) + getNthFib(n - 2);
 		}
 	}
 
 	public static void main(String[] args) {
-		int n = 5;
+		int n = 6;
 		int n2 = 2;
 
 		System.out.println(getNthFib(n));

@@ -13,19 +13,31 @@ public class RemoveDuplicatesFromLinkedList {
 	}
 
 	public static LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
+		
+		// 1. First, we create a variable and set it equal to the head of our LinkedList.
 		LinkedList current = linkedList;
 
+		// 2. We create a 'while' loop to iterate over our entire list until reaching the final node, which will equal 'null'. 
 		while (current != null) {
+			
+			// 3. We create a variable and set it equal to the next node in the LinkedList.
 			LinkedList nextNode = current.next;
 
+			// 4. We create a 2nd 'while' loop that runs while the node doesn't equal 'null' and the next Node's value is equal to the previous node's value.  
 			while (nextNode != null && nextNode.value == current.value) {
+				
+				// 5. We then set the next node equal to the node after that until the value is no longer equal to the current node's value.
 				nextNode = nextNode.next;
 			}
 
+			// 6. After the loop breaks, we set the value of the next node equal to the nextNode variable. Basically our current node points to the next node that is not a repeat. 
 			current.next = nextNode;
+			
+			// 7. We then adjust current to equal the next node in the LinkedList and the process repeats until the first loop is broken.
 			current = nextNode;
 		}
 		
+		// 8. Finally, once the loop finishes iterating over every node, we return our updated LinkedList, now with no duplicate values.
 		return linkedList;
 	}
 

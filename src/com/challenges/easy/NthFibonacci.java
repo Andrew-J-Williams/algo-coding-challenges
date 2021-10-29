@@ -22,25 +22,13 @@ package com.challenges.easy;
 public class NthFibonacci {
 
 	public static int getNthFib(int n) {
-
-	    int i = 1;
-			int sum = 0;
-			int previous = 0;
-			int next = 1;
-			
-			if(n == 2) return next;
-			
-			while (i < n-1) {
-
-				sum = previous + next;
-				previous = next;
-				next = sum;
-
-				i++;
-			}
-
-			
-			return sum;
+		if (n == 2){
+			return 1;
+		} else if (n == 1){
+			return 0;
+		} else {
+			return getNthFib(n - 1) + getNthFib(n - 2);
+		}
 	}
 
 	public static void main(String[] args) {

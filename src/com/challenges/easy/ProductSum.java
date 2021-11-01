@@ -1,5 +1,7 @@
 package com.challenges.easy;
 
+import java.util.List;
+
 /*
  * 
 	Product Sum
@@ -23,6 +25,11 @@ package com.challenges.easy;
  */
 
 public class ProductSum {
+
+	public static int productSum(List<Object> array) {
+		// Write your code here.
+		return -1;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

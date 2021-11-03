@@ -1,5 +1,7 @@
 package com.challenges.easy;
 
+import java.util.Arrays;
+
 /*
  * 
 	Insertion Sort
@@ -22,8 +24,9 @@ public class InsertionSort {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] array1 = { 8, 5, 2, 9, 5, 6, 3 };
 
+		System.out.println(Arrays.toString(insertionSort(array1)));
 	}
 
 }

@@ -25,25 +25,29 @@ public class BinarySearch {
 
 	public static int binarySearch(int[] array, int target) {
 		
-		int l = 0;
-		int r = array.length - 1;
+		return binaryCheck(array, target, 0, array.length - 1);
+	}
+	
+	public static int binaryCheck(int[] array, int target, int left, int right) {
 		
-		while(l != r) {
-			int m = l + r / 2;
-			
-			if(array[m] == target) {
-				return m;
-			} else if (array[m] > target) {
-				r = m - 1;
-			} else {
-				l = m + 1;
-			}
+		if(left > right) {
+			return -1;
+		}
+		
+		int m = (left + right) / 2;
+		int match = array[m];
+		
+		if(target == match) {
+			return m;
+		} else if(target < match) {
+			return binaryCheck(array, target, left, m - 1);
+		} else {
+			return binaryCheck(array, target, m + 1, right);
 		}
 		
 		
-		return -1;
 	}
-	
+
 	public static void main(String[] args) {
 		int[] array1 = { 0, 1, 21, 33, 45, 45, 61, 71, 72, 73 };
 		int target1 = 33;

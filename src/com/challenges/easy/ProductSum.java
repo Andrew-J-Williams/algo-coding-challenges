@@ -32,9 +32,23 @@ public class ProductSum {
 
 	public static int productSum(List<Object> array) {
 
-		System.out.println(array);
+		return productSumCalc(array, 1, 0);
 		
-		return -1;
+	}
+	
+	public static int productSumCalc(List<Object> array, int m, int sum) {
+		
+		for(Object x : array) {
+			if(x instanceof ArrayList) {
+				ArrayList<Object> newArray = (ArrayList<Object>) x;
+				sum += productSumCalc(newArray, m+1, 0);
+			} else {
+				sum += (int) x;
+			}
+		}
+		
+		
+		return sum * m;
 	}
 
 	public static void main(String[] args) {

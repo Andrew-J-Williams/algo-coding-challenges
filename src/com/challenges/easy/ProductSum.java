@@ -30,24 +30,38 @@ public class ProductSum {
 	// Tip: You can use `element instanceof ArrayList` to check whether an item
 	// is an array or an integer.
 
+	// 1. We create a method that takes in an ArrayList of objects
 	public static int productSum(List<Object> array) {
 
+		// 2. We return our recursive method that accepts the ArrayList, the array depth level (m), and the running sum.
 		return productSumCalc(array, 1, 0);
 		
 	}
 	
+	// 3. Our recursive function accepts the parameters previously listed, returning an integer.
 	public static int productSumCalc(List<Object> array, int m, int sum) {
 		
+		// 4. We use a 'for' loop to iterate over each object in the array, represented by 'x'.
 		for(Object x : array) {
+			
+			// 5. If x is a "special" array (which we determine through the use of 'instanceof'...
 			if(x instanceof ArrayList) {
+				
+				// ...then we create a new ArrayList and set it equal to x converted to and ArrayList type...
 				ArrayList<Object> newArray = (ArrayList<Object>) x;
+				
+				// ...and run our function again with the new ArrayList plus incrementing m by 1. We add the result to our running sum.
 				sum += productSumCalc(newArray, m+1, 0);
+			
+			// 6. If the object is just an number...	
 			} else {
+				
+				// ...then we convert x's type to 'int' and add it to our running sum.
 				sum += (int) x;
 			}
 		}
 		
-		
+		// 7. Once we have iterated over the entire ArrayList, we return our running sum times m.
 		return sum * m;
 	}
 

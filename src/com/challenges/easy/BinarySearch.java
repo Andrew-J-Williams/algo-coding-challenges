@@ -24,14 +24,26 @@ package com.challenges.easy;
 public class BinarySearch {
 
 	public static int binarySearch(int[] array, int target) {
-		// Write your code here.
 		
-		int left = 0;
-		int right = array.length - 1;
+		int l = 0;
+		int r = array.length - 1;
+		
+		while(l != r) {
+			int m = l + r / 2;
+			
+			if(array[m] == target) {
+				return m;
+			} else if (array[m] > target) {
+				r = m - 1;
+			} else {
+				l = m + 1;
+			}
+		}
+		
 		
 		return -1;
 	}
-
+	
 	public static void main(String[] args) {
 		int[] array1 = { 0, 1, 21, 33, 45, 45, 61, 71, 72, 73 };
 		int target1 = 33;

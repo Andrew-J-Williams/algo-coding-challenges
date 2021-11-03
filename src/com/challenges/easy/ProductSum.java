@@ -1,5 +1,6 @@
 package com.challenges.easy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -25,18 +26,42 @@ import java.util.List;
  */
 
 public class ProductSum {
-	
-	 // Tip: You can use `element instanceof ArrayList` to check whether an item
-	 // is an array or an integer.
+
+	// Tip: You can use `element instanceof ArrayList` to check whether an item
+	// is an array or an integer.
 
 	public static int productSum(List<Object> array) {
-		// Write your code here.
+
+		System.out.println(array);
+		
 		return -1;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		List<Object> array1 = new ArrayList<>();
+		List<Object> array2 = new ArrayList<>();
+		List<Object> array3 = new ArrayList<>();
+		List<Object> array4 = new ArrayList<>();
+		
+		array4.add(7);
+		array4.add(-1);
+		
+		array3.add(-13);
+		array3.add(8);
+		
+		array2.add(6);
+		array2.add(array3);
+		array2.add(4);
+		
+		array1.add(5);
+		array1.add(2);
+		array1.add(array4);
+		array1.add(3);
+		array1.add(array2);
+		
 
+		System.out.println(productSum(array1));
 	}
 
 }

@@ -19,8 +19,22 @@ import java.util.Arrays;
 public class InsertionSort {
 
 	public static int[] insertionSort(int[] array) {
-		// Write your code here.
-		return new int[] {};
+
+		int swap = 0;
+		
+		for(int i = 1; i < array.length; i++) {
+			for(int k = i - 1; k >= 0; k--) {
+				if(array[i] < array[k]) {
+					swap = array[i];
+					array[i] = array[k];
+					array[k] = swap;
+					i--;
+				}
+			}
+		}
+		
+		
+		return array;
 	}
 
 	public static void main(String[] args) {

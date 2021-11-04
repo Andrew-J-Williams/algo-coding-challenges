@@ -32,8 +32,8 @@ public class GenerateDocument {
 
 		Hashtable<String, Integer> letters = new Hashtable<>();
 		
-		for(int i = 0; i < document.length(); i++) {
-			String current = Character.toString(document.charAt(i));
+		for(int i = 0; i < characters.length(); i++) {
+			String current = Character.toString(characters.charAt(i));
 			
 			if(letters.containsKey(current)) {
 				Integer occur = letters.get(current);
@@ -43,9 +43,18 @@ public class GenerateDocument {
 			}
 		}
 		
-		System.out.println(letters);
+		for(int j = 0; j < document.length(); j++) {
+			String current = Character.toString(document.charAt(j));
+			
+			if(letters.containsKey(current) && letters.get(current) > 0) {
+				Integer occur = letters.get(current);
+				letters.put(current, occur - 1);
+			} else {
+				return false;
+			}
+		}
 		
-		return false;
+		return true;
 	}
 
 	public static void main(String[] args) {

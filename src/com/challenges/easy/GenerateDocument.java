@@ -26,14 +26,16 @@ package com.challenges.easy;
 
 public class GenerateDocument {
 
-	public boolean generateDocument(String characters, String document) {
+	public static boolean generateDocument(String characters, String document) {
 		// Write your code here.
 		return false;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String characters1 = "aheaolabbhb";
+		String document1 = "hello";
+		
+		System.out.println(generateDocument(characters1, document1));
 	}
 
 }

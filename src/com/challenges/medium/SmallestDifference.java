@@ -26,9 +26,43 @@ import java.util.Arrays;
 public class SmallestDifference {
 
 	public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
-		// Write your code here.
-		return new int[] {};
+
+		Arrays.sort(arrayOne);
+		Arrays.sort(arrayTwo);
+		
+		int i1 = 0;
+		int i2 = 0;
+		
+		int smallest = Integer.MAX_VALUE;
+		int current = Integer.MAX_VALUE;
+		
+		int[] smallestPair = new int[2];
+		
+		while(i1 < arrayOne.length && i2 < arrayTwo.length) {
+			
+			int first = arrayOne[i1];
+			int second = arrayTwo[i2];
+			
+			if(first < second) {
+				current = second - first;
+				i1++;
+			} else if(first > second) {
+				current = first - second;
+				i2++;
+			}else {
+				return new int[] {first, second};
+			}
+			
+			if(smallest > current) {
+				smallest = current;
+				smallestPair = new int[] {first, second};
+			}
+			
+		}
+		
+		return smallestPair;
 	}
+
 
 	public static void main(String[] args) {
 		int[] arrayOne = { -1, 5, 10, 20, 28, 3 };

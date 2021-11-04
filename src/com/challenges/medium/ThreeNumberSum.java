@@ -30,7 +30,10 @@ public class ThreeNumberSum {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] array1 = { 12, 3, 1, 2, -6, 5, -8, 6 };
+		int target1 = 0;
+		
+		System.out.println(threeNumberSum(array1, target1));
 
 	}
 

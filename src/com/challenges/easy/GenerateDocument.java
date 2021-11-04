@@ -1,5 +1,7 @@
 package com.challenges.easy;
 
+import java.util.*;
+
 /*
  * 
 	Generate Document
@@ -27,7 +29,22 @@ package com.challenges.easy;
 public class GenerateDocument {
 
 	public static boolean generateDocument(String characters, String document) {
-		// Write your code here.
+
+		Hashtable<String, Integer> letters = new Hashtable<>();
+		
+		for(int i = 0; i < document.length(); i++) {
+			String current = Character.toString(document.charAt(i));
+			
+			if(letters.containsKey(current)) {
+				Integer occur = letters.get(current);
+				letters.put(current, occur + 1);
+			} else {
+				letters.put(current, 1);
+			}
+		}
+		
+		System.out.println(letters);
+		
 		return false;
 	}
 

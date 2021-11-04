@@ -30,31 +30,32 @@ public class GenerateDocument {
 
 	public static boolean generateDocument(String characters, String document) {
 
-		Hashtable<String, Integer> letters = new Hashtable<>();
-		
-		for(int i = 0; i < characters.length(); i++) {
-			String current = Character.toString(characters.charAt(i));
+		for(int i = 0; i < document.length(); i++) {
+			char character = document.charAt(i);
 			
-			if(letters.containsKey(current)) {
-				Integer occur = letters.get(current);
-				letters.put(current, occur + 1);
-			} else {
-				letters.put(current, 1);
-			}
-		}
-		
-		for(int j = 0; j < document.length(); j++) {
-			String current = Character.toString(document.charAt(j));
+			int documentFrequency = count(character, document);
+			int charactersFrequency = count(character, characters);
 			
-			if(letters.containsKey(current) && letters.get(current) > 0) {
-				Integer occur = letters.get(current);
-				letters.put(current, occur - 1);
-			} else {
+			if(documentFrequency > charactersFrequency) {
 				return false;
 			}
 		}
 		
 		return true;
+	}
+	
+	public static int count(char character, String target) {
+		int frequency = 0;
+		
+		for(int i = 0; i < target.length(); i++) {
+			char c = target.charAt(i);
+			
+			if(c == character) {
+				frequency += 1;
+			}
+		}
+		
+		return frequency;
 	}
 
 	public static void main(String[] args) {

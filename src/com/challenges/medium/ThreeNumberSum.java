@@ -1,6 +1,8 @@
 package com.challenges.medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -25,8 +27,37 @@ import java.util.List;
 public class ThreeNumberSum {
 
 	public static List<Integer[]> threeNumberSum(int[] array, int targetSum) {
-		// Write your code here.
-		return new ArrayList<Integer[]>();
+		
+		List<Integer[]> triplets = new ArrayList<>();
+		
+		Arrays.sort(array);	
+		
+		System.out.println(Arrays.toString(array));
+			
+		for(int i = 0; i < array.length - 2; i++) {
+			int l = i + 1;
+			int r = array.length - 1;
+			
+			while(l < r) {
+				
+				int sum = array[i] + array[l] + array[r];
+				
+				if(sum == targetSum) {
+					Integer[] triplet = {array[i], array[l], array[r]};
+					triplets.add(triplet);
+					l++;
+					r--;
+				} else if (sum < targetSum) {
+					l++;
+				} else if(sum > targetSum) {
+					r--;
+				}
+				
+			}
+		}
+		
+		
+		return triplets;
 	}
 
 	public static void main(String[] args) {

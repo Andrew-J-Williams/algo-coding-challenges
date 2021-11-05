@@ -12,6 +12,12 @@ package com.challenges.medium;
 	they simply don't decrease.
 	
 	Note that empty arrays and arrays of one element are monotonic.
+	
+	Sample Input:
+	array = [ -1, -5, -10, -1100, -1101, -1102, -9001 ]
+	
+	Sample Output:
+	true
  * 
  */
 

@@ -8,7 +8,9 @@ public class MonotonicArray {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] array1 = { -1, -5, -10, -1100, -1101, -1102, -9001 };
+		
+		System.out.println(isMonotonic(array1));
 
 	}
 

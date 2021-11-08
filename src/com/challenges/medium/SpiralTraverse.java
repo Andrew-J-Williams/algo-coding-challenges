@@ -54,8 +54,9 @@ public class SpiralTraverse {
 				finalArray.add(array[firstRow][i]);
 			}
 			
-			// 6. The 2nd 'for' loop, 'j' equals the starting row's value and the loop runs until 'j' is greater than the ending row's value.
-			for(int j = firstRow; j <= endingRow; j++) {
+			// 6. The 2nd 'for' loop, 'j' equals the starting row's value plus 1 (since we already captured the last value of the first row with the previous for loop)
+			// and the loop runs until 'j' is greater than the ending row's value.
+			for(int j = firstRow + 1; j <= endingRow; j++) {
 				
 				// 7. We add the last value of each sub-array (row) to our ArrayList, with 'j' being the increasing value and the ending column being the last value.
 				// i.e. [ 1, 2, 3, 4, 5, 6, 7 ]

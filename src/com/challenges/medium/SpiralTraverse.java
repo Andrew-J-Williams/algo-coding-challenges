@@ -31,15 +31,15 @@ public class SpiralTraverse {
 	public static List<Integer> spiralTraverse(int[][] array) {
 
 		List<Integer> finalArray = new ArrayList<>();
-		
-		int size = array.length - 1;
-		
+			
 		int firstRow = 0;
 		int firstColumn = 0;
 		int endingRow = array.length - 1;
-		int endingColumn = array.length - 1;
+		int endingColumn = array[0].length - 1;
 		
 		while(firstRow < endingRow && firstColumn < endingColumn) {
+			
+			
 			
 			
 			firstRow++;

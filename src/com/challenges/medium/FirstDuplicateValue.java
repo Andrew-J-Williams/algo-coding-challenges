@@ -20,13 +20,25 @@ import java.util.*;
 public class FirstDuplicateValue {
 	
 	public static int firstDuplicateValue(int[] array) {
-	    // Write your code here.
+	    
+		HashSet<Integer> values = new HashSet<>();
+		
+		for(int x : array) {
+			if(!values.contains(x)) {
+				values.add(x);
+			} else {
+				return x;
+			}
+		}
+		
+		
 	    return -1;
 	  }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] array1 = { 2, 1, 5, 3, 3, 2, 4 };
+		
+		System.out.println(firstDuplicateValue(array1));
 	}
 
 }

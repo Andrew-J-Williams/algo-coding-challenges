@@ -37,13 +37,38 @@ public class SpiralTraverse {
 		int endingRow = array.length - 1;
 		int endingColumn = array[0].length - 1;
 		
-		while(firstRow < endingRow && firstColumn < endingColumn) {
+		while(firstRow <= endingRow && firstColumn <= endingColumn) {
 			
+			for(int i = firstColumn; i <= endingColumn; i++) {
+				finalArray.add(array[firstRow][i]);
+			}
 			
+			for(int j = firstRow; j <= endingRow; j++) {
+				finalArray.add(array[j][endingColumn]);
+			}
 			
+			for(int k = endingColumn - 1; k >= firstColumn; k--) {
+				
+				if(firstRow == endingRow) {
+					break;
+				}
+				
+				finalArray.add(array[endingRow][k]);
+			}
+			
+			for(int l = endingRow - 1; l > firstRow; l--) {
+				
+				if(firstColumn == endingColumn) {
+					break;
+				}
+				
+				finalArray.add(array[l][firstColumn]);
+			}
 			
 			firstRow++;
 			endingRow--;
+			firstColumn++;
+			endingColumn--;
 		}
 		
 		

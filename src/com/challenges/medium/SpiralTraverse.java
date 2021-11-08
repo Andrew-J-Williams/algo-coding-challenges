@@ -91,27 +91,24 @@ public class SpiralTraverse {
 					break;
 				}
 				
-				// 13. Otherwise, we add the first value of every row to our ArrayList.
+				// 13. Otherwise, we add the first value of every row to our ArrayList. The decrementing value of 'l' represents each individual row while the value of starting
+				// column represents the index of the starting element in each row. i.e. [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ].
 				finalArray.add(array[l][firstColumn]);
 			}
 			
+			// 14. In order to add the remaining values, we have to close in the boundaries of our two dimensional array, or in figurative terms, decrease the boundaries of our square.
+			// In order to do this, we increase the value of our starting row and column by 1 and decrease the value of our ending row and column by 1. This basically divides our 
+			// square in half, allowing the loop to continue and capture the values located in the center of the matrix.
 			firstRow++;
 			endingRow--;
 			firstColumn++;
 			endingColumn--;
 		}
 		
-		
+		// 15. After our loop has completed, we return the ArrayList.
 	    return finalArray;
 	  }
 	
-	public static void addNumbers(int[] array) {
-		
-		for(int i = 0; i < array.length; i++) {
-			
-		}
-		
-	}
 
 	public static void main(String[] args) {
 		int[][] array1 = { {1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6}, {10, 9, 8, 7} };

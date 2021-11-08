@@ -36,8 +36,8 @@ public class SpiralTraverse {
 		
 		int firstRow = 0;
 		int firstColumn = 0;
-		int endingRow = 3;
-		int endingColumn = 3;
+		int endingRow = array.length - 1;
+		int endingColumn = array.length - 1;
 		
 		while(firstRow < endingRow && firstColumn < endingColumn) {
 			

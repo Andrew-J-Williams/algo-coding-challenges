@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import java.util.Arrays;
+
 /*
  * 
 	Array of Products
@@ -26,14 +28,40 @@ package com.challenges.medium;
 
 public class ArrayOfProducts {
 
-	public int[] arrayOfProducts(int[] array) {
-		// Write your code here.
-		return new int[] {};
+	public static int[] arrayOfProducts(int[] array) {
+		int[] products = new int[array.length];
+		
+		int i = 0;
+		
+		while(i < array.length) {
+			
+			int product = 1;
+			
+			int left = i - 1;
+			int right = i + 1;
+			
+			while(left >= 0) {
+				product *= array[left];
+				left--;
+			}
+			
+			while(right < array.length) {
+				product *= array[right];
+				right++;
+			}
+			
+			products[i] = product;
+			
+			i++;
+		}
+		
+		return products;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] array1 = { 5, 1, 4, 2 };
 
+		System.out.println(Arrays.toString(arrayOfProducts(array1)));
 	}
 
 }

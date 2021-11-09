@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import java.util.Arrays;
+
 /*
  * 
 	Merge Overlapping Intervals
@@ -11,19 +13,27 @@ package com.challenges.medium;
 	Note that back-to-back intervals aren't considered to be overlapping. For example, [1, 5] and [6, 7] aren't overlapping: however, [1, 6] and [6, 7] are indeed overlapping.
 	
 	Also note that the start of any particular interval will always be less than or equal to the end of that interval. 
+	
+	Sample Input:
+	intervals = [[1, 2], [3, 5], [4, 7], [6, 8], [9, 10]]
+	
+	Sample Output:
+	[[1, 2], [3, 8], [9, 10]]
+	
  * 
  */
 
 public class MergeOverlappingIntervals {
 
-	public int[][] mergeOverlappingIntervals(int[][] intervals) {
+	public static int[][] mergeOverlappingIntervals(int[][] intervals) {
 		// Write your code here.
 		return new int[][] {};
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[][] array1 = {{1, 2}, {3, 5}, {4, 7}, {6, 8}, {9, 10}};
 
+		System.out.println(Arrays.toString(mergeOverlappingIntervals(array1)));
 	}
 
 }

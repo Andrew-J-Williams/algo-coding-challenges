@@ -1,6 +1,6 @@
 package com.challenges.medium;
 
-import java.util.Arrays;
+import java.util.*;
 
 /*
  * 
@@ -26,14 +26,42 @@ import java.util.Arrays;
 public class MergeOverlappingIntervals {
 
 	public static int[][] mergeOverlappingIntervals(int[][] intervals) {
-		// Write your code here.
-		return new int[][] {};
+		
+		
+		
+		int[][] sortedIntervals = intervals.clone();
+		Arrays.sort(sortedIntervals, (a, b) -> Integer.compare(a[0], b[0]));
+		
+		List<int[]> mergedIntervals = new ArrayList<>();
+		
+		int[] currentInterval = sortedIntervals[0];
+		
+		mergedIntervals.add(currentInterval);
+		
+		for(int[] nextInterval : sortedIntervals) {
+			
+			int currentIntEnd = currentInterval[1];
+			int nextIntStart = nextInterval[0];
+			int nextIntEnd = nextInterval[1];
+			
+			if(currentIntEnd >= nextIntStart) {
+				currentInterval[1] = Math.max(currentIntEnd, nextIntEnd);
+			} else {
+				currentInterval = nextInterval;
+				mergedIntervals.add(currentInterval);
+			}
+			
+		}
+		
+		return mergedIntervals.toArray(new int[mergedIntervals.size()][]);
 	}
+	
 
 	public static void main(String[] args) {
 		int[][] array1 = {{1, 2}, {3, 5}, {4, 7}, {6, 8}, {9, 10}};
+		int[][] array2 = { {20, 21}, {22, 23}, {0, 1}, {3, 4}, {23, 24}, {25, 27}, {5, 6}, {7, 19}};
 
-		System.out.println(Arrays.toString(mergeOverlappingIntervals(array1)));
+		System.out.println(Arrays.toString(mergeOverlappingIntervals(array2)));
 	}
 
 }

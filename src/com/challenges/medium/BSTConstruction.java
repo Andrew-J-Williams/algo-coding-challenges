@@ -62,14 +62,45 @@ public class BSTConstruction {
 		}
 
 		public BST insert(int value) {
-			// Write your code here.
+
+			if(value < this.value){
+				if(left == null){
+					BST newBST = new BST(value);
+					left = newBST;
+				} else {
+					left.insert(value);
+				}
+			} else {
+				if(right == null){
+					BST newBST = new BST(value);
+					right = newBST;
+				} else {
+					right.insert(value);
+				}
+			}
+			
 			// Do not edit the return statement of this method.
 			return this;
 		}
 
 		public boolean contains(int value) {
-			// Write your code here.
-			return false;
+
+			if(value < this.value){
+				if(left == null){
+					return false;
+				} else {
+					return left.contains(value);
+				}
+			} else if (value > this.value){
+				if(right == null){
+					return false;
+				} else {
+					return right.contains(value);
+				}
+			} else {
+				return true;
+			}
+			
 		}
 
 		public BST remove(int value) {

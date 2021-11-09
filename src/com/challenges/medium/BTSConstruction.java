@@ -28,10 +28,27 @@ public class BTSConstruction {
 			return this;
 		}
 
-		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-
-		}
+	}
+	
+	public static void main(String[] args) {
+		BST root = new BST(10);
+		BST n1 = new BST(5);
+		BST n2 = new BST(15);
+		BST n3 = new BST(2);
+		BST n4 = new BST(5);
+		BST n5 = new BST(13);
+		BST n6 = new BST(22);
+		BST n7 = new BST(1);
+		BST n8 = new BST(14);
+		
+		root.left = n1;
+		root.right = n2;
+		root.left.left = n3;
+		root.left.right = n4;
+		root.right.left = n5;
+		root.right.right = n6;
+		root.left.left.left = n7;
+		root.right.left.right = n8;
 
 	}
 }

@@ -63,15 +63,15 @@ public class BSTConstruction {
 
 		public BST insert(int value) {
 
-			if(value < this.value){
-				if(left == null){
+			if (value < this.value) {
+				if (left == null) {
 					BST newBST = new BST(value);
 					left = newBST;
 				} else {
 					left.insert(value);
 				}
 			} else {
-				if(right == null){
+				if (right == null) {
 					BST newBST = new BST(value);
 					right = newBST;
 				} else {
@@ -79,20 +79,19 @@ public class BSTConstruction {
 				}
 			}
 			
-			// Do not edit the return statement of this method.
 			return this;
 		}
 
 		public boolean contains(int value) {
 
-			if(value < this.value){
-				if(left == null){
+			if (value < this.value) {
+				if (left == null) {
 					return false;
 				} else {
 					return left.contains(value);
 				}
-			} else if (value > this.value){
-				if(right == null){
+			} else if (value > this.value) {
+				if (right == null) {
 					return false;
 				} else {
 					return right.contains(value);
@@ -100,37 +99,55 @@ public class BSTConstruction {
 			} else {
 				return true;
 			}
-			
+
 		}
 
 		public BST remove(int value) {
-			// Write your code here.
-			// Do not edit the return statement of this method.
+			remove(value, null);
 			return this;
 		}
 
-	}
+		public void remove(int value, BST parent) {
 
-	public static void main(String[] args) {
-		BST root = new BST(10);
-		BST n1 = new BST(5);
-		BST n2 = new BST(15);
-		BST n3 = new BST(2);
-		BST n4 = new BST(5);
-		BST n5 = new BST(13);
-		BST n6 = new BST(22);
-		BST n7 = new BST(1);
-		BST n8 = new BST(14);
+			if (value < this.value) {
+				if (left != null) {
+					left.remove(value, this);
+				}
+			} else if (value > this.value) {
+				if (right != null) {
+					right.remove(value, this);
+				}
+			} else {
+				if (left != null && right != null) {
+					this.value = right.getMinValue();
+					right.remove(this.value, this);
+				} else if (parent == null) {
+					if (left != null) {
+						this.value = left.value;
+						right = left.right;
+						left = left.left;
+					} else if (right != null) {
+						this.value = right.value;
+						right = right.right;
+						left = right.left;
+					} else {
 
-		root.left = n1;
-		root.right = n2;
-		root.left.left = n3;
-		root.left.right = n4;
-		root.right.left = n5;
-		root.right.right = n6;
-		root.left.left.left = n7;
-		root.right.left.right = n8;
+					}
+				} else if (parent.left == this) {
+					parent.left = left != null ? left : right;
+				} else if (parent.right == this) {
+					parent.right = left != null ? left : right;
+				}
+			}
+		}
 
+		public int getMinValue() {
+			if (left == null) {
+				return this.value;
+			} else {
+				return left.getMinValue();
+			}
+		}
 	}
 
 }

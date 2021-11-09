@@ -61,24 +61,48 @@ public class BSTConstruction {
 			this.value = value;
 		}
 
+		
+		// 1. Our 'insert' method takes in the argument of the value we are wanting to insert in our Binary Search Tree. For this method, and the ones that follow, each one will act
+		// recursively, meaning these methods will call themselves repeatedly within their own code, allowing us to repeat the given operation until the desired effect is achieved.
 		public BST insert(int value) {
 
+			// 2. We check and see if the insert value is less than the tree's current value. Given the nature of a BST, we know that all values less than the current node's value will
+			// branch out to the left while all the values that are greater will branch out to the right. If the value we want to insert is less than the node's value...
 			if (value < this.value) {
+				
+				// 3. We then check if the value of the left child node is equal to null. If it is, this indicates there isn't a child node present on the left side, meaning we can 
+				// create a node that will hold the inserted value. So if this is the case...
 				if (left == null) {
+					
+					// ...we create a new BST, passing in our inserted value as its value, and set our left node equal to our newly created child node. 
 					BST newBST = new BST(value);
 					left = newBST;
+				// 4. Otherwise, if our left side does have a child node with a value...
 				} else {
+					
+					// ...we call our 'insert' method on that node and pass the value we want to insert as the argument.
 					left.insert(value);
 				}
+			
+			// 5. If the inserted value is greater than the node's value, we checked the right side of our binary search tree.	
 			} else {
+				
+				// 6. If the node on the right branch is null...
 				if (right == null) {
+					
+					// ...we create a new BST, passing in our inserted value as its value, and set our right node equal to our newly created child node. 
 					BST newBST = new BST(value);
 					right = newBST;
+				
+				// 7. Otherwise, if our right side does have a child node with a value... 
 				} else {
+					
+					// ...we call our 'insert' method on that node and pass the value we want to insert as the argument.
 					right.insert(value);
 				}
 			}
 			
+			// After we've gone through the logic, we finally return our BST.
 			return this;
 		}
 

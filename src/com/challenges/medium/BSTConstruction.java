@@ -37,7 +37,7 @@ package com.challenges.medium;
 			 /      /  \
 			1      12  14
 			
-	insert(10):    12
+	remove(10):    12
 				 /    \
 			    5      15
 			   /  \   /  \
@@ -106,57 +106,126 @@ public class BSTConstruction {
 			return this;
 		}
 
+		// 8. Our 'contains' method also accepts a value as an argument.
 		public boolean contains(int value) {
 
+			// 9. If the value is less than the value of the current node...
 			if (value < this.value) {
+				
+				// 10. We check if the left child node is equal to null. If it is...
 				if (left == null) {
+					
+					// ...we return false, because we have reached the end of the branch and have no where left to go.
 					return false;
+				
+				// 11. Otherwise, if there is a node present on the left branch...
 				} else {
+					
+					// ...we return the result of calling our contains method on the left node, passing in our original value again, repeating the logic.
 					return left.contains(value);
 				}
+			// 12. If the value is greater than the value of the current node... 	
 			} else if (value > this.value) {
+				
+				// 13. We check if the right child node is equal to null. If it is...
 				if (right == null) {
+					
+					// ...we return false since the value we were searching for was not present.
 					return false;
+					
+				// 14. Otherwise, if there is a node present on the right branch...	
 				} else {
+					
+					// ......we return the result of calling our contains method on the right node, passing in our original value again, repeating the logic.
 					return right.contains(value);
 				}
+				
+			// 15. Otherwise, we have found a value that equals the value that was passed in...	
 			} else {
+				
+				// ...as a result, we return true.
 				return true;
 			}
 
 		}
 
+		
+		// 16. Our final method, 'remove', accepts the argument of a value as well.
 		public BST remove(int value) {
+			
+			// 17. We call a helper method called 'remove' and pass in our value as well as 'null' to represent the parent of the tree.
 			remove(value, null);
+			
+			// 18. We return the BST after the helper methods finish. 
 			return this;
 		}
 
+		// 19. Our first helper method, 'remove', takes in two arguments: the value we are looking to remove and the BST parent node.
 		public void remove(int value, BST parent) {
 
+			// 20. If the value is less than the value of the parent node...
 			if (value < this.value) {
+				
+				// 21. We check if the node on the left branch is NOT equal to 'null'. If it isn't...
 				if (left != null) {
+					
+					// ...we call our 'remove' method on the left child node and pass in the value we want to remove along with the current node.
 					left.remove(value, this);
 				}
+			
+			// 21. If the value is greater than the value of the parent node...	
 			} else if (value > this.value) {
+				
+				// 22. We check if the right child node is NOT equal to null. If it isn't...
 				if (right != null) {
+					
+					// ......we call our 'remove' method on the right child node and pass in the value we want to remove along with the current node.
 					right.remove(value, this);
 				}
+				
+			// 23. If our value is equal to the value of the parent node...	
 			} else {
+				
+				// 24. We check if the left and right child nodes are NOT equal to null. If they aren't...
 				if (left != null && right != null) {
+					
+					// ...we set the value of the parent node equal to the result of calling our 2nd helper method, 'getMinValue', on the right child node. What this helper is doing is
+					// checking to see what the smallest value is on the right side of the binary search tree. We do this because if we are removing the value from the current node we
+					// need to replace it with another value that is greater than the value of the parent node yet less than the right child node of the parent node. In doing this,
+					// we ultimately will remove the leftmost value on the right side of our tree. Once the value has been updated...
 					this.value = right.getMinValue();
+					
+					// ...we call the remove method again on the right child node, passing in the value we just updated as well as the parent node, repeating the logic again. We do this
+					// in order to remove the leftmost value in our BST, so we don't have the same value present in two different places. We already removed our desired value, replaced
+					// it, and now need to again remove the node where our replacement value originated. This can be seen in the prompt example above.
 					right.remove(this.value, this);
+					
+				// 25. If the parent is equal to 'null', then we have to make sure it holds some type of value in order for our BST to remain valid.	
 				} else if (parent == null) {
+					
+					// 26. We would then check if our left child node is NOT equal to 'null', and if it isn't
 					if (left != null) {
+						
+						// ... we set our current node's value equal to the left node's value, and set the left and right children's nodes equal to those of the left node. This essentially
+						// is shifting the branches on the tree in order to account for a node that has been removed.
 						this.value = left.value;
 						right = left.right;
 						left = left.left;
+					
+					// 27. If our right node is NOT equal to 'null', we apply the same logic that we would use on the left side... 
 					} else if (right != null) {
+						
+						// ... we set our current node's value equal to the right node's value, and set the left and right children's nodes equal to those of the right node. 
 						this.value = right.value;
 						right = right.right;
 						left = right.left;
+					
+					// 28. If both the right and left child nodes are equal to null, then we have a situation where the tree is a single node, and in that case...
 					} else {
-
+						// ...we simply do nothing, since there is nothing to remove at this point.
 					}
+					
+				// 29. If the left node of the parent is equal to the current node...	
 				} else if (parent.left == this) {
 					parent.left = left != null ? left : right;
 				} else if (parent.right == this) {

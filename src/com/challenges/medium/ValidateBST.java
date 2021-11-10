@@ -30,7 +30,10 @@ package com.challenges.medium;
 public class ValidateBST {
 
 	public static boolean validateBst(BST tree) {
-		// Write your code here.
+
+		
+		
+		
 		return false;
 	}
 
@@ -64,6 +67,8 @@ public class ValidateBST {
 		root.left.left.left = n7;
 		root.right.left.right = n8;
 
+		
+		System.out.println(validateBst(root));
 	}
 
 }

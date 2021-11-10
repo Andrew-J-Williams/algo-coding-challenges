@@ -44,29 +44,57 @@ import com.challenges.medium.ValidateBST.BST;
 
 public class BSTTraversal {
 
+	
+	// 1. Our first method 'inOrderTraverse', like all the methods to follow, takes in a BST node as well as an ArrayList.
 	public static List<Integer> inOrderTraverse(BST tree, List<Integer> array) {
 
+		// 2. If the left child node is not equal to null, then we know the BST extends further along that subtree. As a result...
 		if(tree.left != null) {
+			
+			// ...we will call our function recursively and pass in the left child node as the parameter along with our ArrayList. In doing this, if we work out way down to the left-most
+			// value. Once we reach that point, we execute the code that follows...
 			inOrderTraverse(tree.left, array);
 		}
 		
+		// 3. Once our left child node is equal to null, we take our current node and add its value to the ArrayList.
 		array.add(tree.value);
 		
+		// 4. We then check to see if our right child node is not equal to null, and if it isn't...
 		if(tree.right != null) {
+			
+			// ...we call our function recursively again, this time passing in the right child node and ArrayList. So now we perform the same logic that we did on the left side until
+			// we reach null. Once we do, following the logic of the recursive function, the right child node's value on the left-most node will get added in. So following this pattern,
+			// we add in node values from left node to parent node to right node.
 			inOrderTraverse(tree.right, array);
 		}
 		
+		// 5. If both children nodes are null, we simply return the array. In using this function recursively, this would allow us to work back up the BST towards the root. In the case
+		// of our example data, the values detected would be as follows: null -> array.add(1) -> null -> return array -> array.add(2) -> null -> return array -> array.add(5) ->
+		// null -> array.add(5) -> null -> return array etc. The completion of an 'if' statement results in the return of an array, and from there the logic continues to execute.
 		return array;
 	}
 
+	// 6. The second method, 'preOrderTraverse', takes in the same arguments as the first method as well as all the same code within it, yet the order of the logic is different! For
+	// pre-order traversal, we are wanting to add values starting at the root/parent and then adding all values from the left subtree and finishing with the values in the right subtree,
+	// ensuring all parent node values are added first, followed by all left values, and then finished off with all right values.
 	public static List<Integer> preOrderTraverse(BST tree, List<Integer> array) {
+		
+		// 7. We add the value of the root or parent node to our ArrayList.
 		array.add(tree.value);
 		
+		// 8. If the left child node does not equal null...
 		if(tree.left != null) {
+			
+			// ...we call our function recursively on the left child node along with the ArrayList. This will run until the end of the left branch is reached, adding all left values
+			// along the way to the ArrayList. Since the final left child node will have no children, the ArrayList will be returned and the logic continues through the original call
+			// of the function.
 			preOrderTraverse(tree.left, array);
 		}
 		
+		// 9. Once the previous logic completes, we now check and see if the right child node is not null, and if it isn't...
 		if(tree.right != null) {
+			
+			// ...we call our function recursively on the right child node and ArrayList. 
 			preOrderTraverse(tree.right, array);
 		}
 		

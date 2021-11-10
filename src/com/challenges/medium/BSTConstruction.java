@@ -225,19 +225,32 @@ public class BSTConstruction {
 						// ...we simply do nothing, since there is nothing to remove at this point.
 					}
 					
-				// 29. If the left node of the parent is equal to the current node...	
+				// 29. If the the parent node's left node of the parent is equal to the current node...	
 				} else if (parent.left == this) {
+					
+					// ...we will reassign the parent node's left node to our current node's left node IF it isn't null. If it is null, then we assign the current node's right node.
 					parent.left = left != null ? left : right;
+				// 30. If the parent node's right node is equal to the current node...
 				} else if (parent.right == this) {
+					
+					// ...then we apply the same logic as we did with the previous 'else if' statement, just to the parent node's right node.
 					parent.right = left != null ? left : right;
 				}
 			}
 		}
 
+		// 31. Our helper method 'getMinValue' is designed to find the smallest value on the left side of the right subtree. 
 		public int getMinValue() {
+			// 32. If the left child node is equal to 'null', then we know we've reached the smallest value in the subtree and as a result...
 			if (left == null) {
+				
+				// ...we return the value of the current node.
 				return this.value;
+				
+			// 33. Otherwise, if the left child node has value, then we need to continue down the subtree, and as a result...	
 			} else {
+				
+				// ...we will call our helper method on the left child node and repeat the previous logic, only this time the left child node becomes the current node.
 				return left.getMinValue();
 			}
 		}

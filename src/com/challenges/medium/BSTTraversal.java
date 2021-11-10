@@ -2,6 +2,8 @@ package com.challenges.medium;
 
 import java.util.*;
 
+import com.challenges.medium.ValidateBST.BST;
+
 /*
  * 
 	BST Traversal
@@ -12,6 +14,30 @@ import java.util.*;
 	Each BST node has an integer 'value', a 'left' child node, and a 'right' child node. A node is said to be a valid BST node if and only if it satisfies the BST property: its value is 
 	strictly greater than the values of every node to its left; its value is less than or equal to the values of every node to its right; and its children nodes are either valid BST
 	nodes themselves or None/null. 
+	
+	In-Order traversal wants us to traverse the BST in numerical order, just like if we were sorting it in ascending order. We always look at the left node first, the current node, and
+	then the right node. When we are at a given node, we want to traverse from left to right. 
+	
+	A Pre-Order traversal 
+	
+	Sample Input:
+	
+	   tree =	   10
+				 /    \
+			    5      15
+			   /  \      \
+			  2    5      22
+			 /        
+			1     
+			
+	   array = []
+	   
+	   
+	Sample Output:
+	inOrderTraverse: [ 1, 2, 5, 5, 10, 15, 22 ]
+	preOrderTraverse: [ 10, 5, 2, 1, 5, 15, 22 ]
+	postOrderTraverse: [ 1, 2, 5, 5, 22, 15, 10 ]
+	
  * 
  */
 
@@ -43,7 +69,21 @@ public class BSTTraversal {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		BST root = new BST(10);
+		BST n1 = new BST(5);
+		BST n2 = new BST(15);
+		BST n3 = new BST(2);
+		BST n4 = new BST(5);
+		BST n6 = new BST(22);
+		BST n7 = new BST(1);
+		
+		
+		root.left = n1;
+		root.right = n2;
+		root.left.left = n3;
+		root.left.right = n4;
+		root.right.right = n6;
+		root.left.left.left = n7;
 
 	}
 

@@ -84,6 +84,12 @@ public class BSTTraversal {
 		root.left.right = n4;
 		root.right.right = n6;
 		root.left.left.left = n7;
+		
+		List<Integer> array1 = new ArrayList<>();
+		
+		System.out.println(inOrderTraverse(root, array1));
+		System.out.println(preOrderTraverse(root, array1));
+		System.out.println(postOrderTraverse(root, array1));
 
 	}
 

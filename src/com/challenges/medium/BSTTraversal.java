@@ -18,7 +18,8 @@ import com.challenges.medium.ValidateBST.BST;
 	In-Order traversal wants us to traverse the BST in numerical order, just like if we were sorting it in ascending order. We always look at the left node first, the current node, and
 	then the right node. When we are at a given node, we want to traverse from left to right. 
 	
-	A Pre-Order traversal 
+	A Pre-Order traversal wants us to append the current value to the array, before we traverse the left and the right. For Post-Order Traversal, we traverse up each subtree before
+	ending with the root value.
 	
 	Sample Input:
 	
@@ -44,18 +45,46 @@ import com.challenges.medium.ValidateBST.BST;
 public class BSTTraversal {
 
 	public static List<Integer> inOrderTraverse(BST tree, List<Integer> array) {
-		// Write your code here.
-		return new ArrayList<Integer>();
+
+		if(tree.left != null) {
+			inOrderTraverse(tree.left, array);
+		}
+		
+		array.add(tree.value);
+		
+		if(tree.right != null) {
+			inOrderTraverse(tree.right, array);
+		}
+		
+		return array;
 	}
 
 	public static List<Integer> preOrderTraverse(BST tree, List<Integer> array) {
-		// Write your code here.
-		return new ArrayList<Integer>();
+		array.add(tree.value);
+		
+		if(tree.left != null) {
+			preOrderTraverse(tree.left, array);
+		}
+		
+		if(tree.right != null) {
+			preOrderTraverse(tree.right, array);
+		}
+		
+		return array;
 	}
 
 	public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
-		// Write your code here.
-		return new ArrayList<Integer>();
+		if(tree.left != null) {
+			postOrderTraverse(tree.left, array);
+		}
+		
+		if(tree.right != null) {
+			postOrderTraverse(tree.right, array);
+		}
+		
+		array.add(tree.value);
+		
+		return array;
 	}
 
 	static class BST {
@@ -86,10 +115,12 @@ public class BSTTraversal {
 		root.left.left.left = n7;
 		
 		List<Integer> array1 = new ArrayList<>();
+		List<Integer> array2 = new ArrayList<>();
+		List<Integer> array3 = new ArrayList<>();
 		
 		System.out.println(inOrderTraverse(root, array1));
-		System.out.println(preOrderTraverse(root, array1));
-		System.out.println(postOrderTraverse(root, array1));
+		System.out.println(preOrderTraverse(root, array2));
+		System.out.println(postOrderTraverse(root, array3));
 
 	}
 

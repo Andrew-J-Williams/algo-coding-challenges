@@ -53,28 +53,22 @@ public class KthLargestValueBST {
 
 		List<Integer> array = new ArrayList<>();
 		
-		List<Integer> sorted = searchTree(tree, array, k);
+		searchTree(tree, array);
 		
-		if(sorted.get(k-1) != null) {
-			return sorted.get(k-1);
-		}
 		
-		return -1;
+		return array.get(k-1);
 	}
 	
-	public static List<Integer> searchTree(BST tree, List<Integer> array, int k){
+	public static void searchTree(BST tree, List<Integer> array){
 		
-		if(tree.right != null) {
-			searchTree(tree.right, array, k);
-		}
+		if(tree == null) return;
+		
+		searchTree(tree.right, array);
 		
 		array.add(tree.value);
 		
-		if(tree.left != null) {
-			searchTree(tree.left, array, k);
-		}
+		searchTree(tree.left, array);
 		
-		return array;
 	}
 
 	public static void main(String[] args) {

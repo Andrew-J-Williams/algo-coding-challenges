@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import com.challenges.medium.BSTTraversal.BST;
+
 /*
  * 
 	Find Kth Largest Value in BST
@@ -46,13 +48,33 @@ public class KthLargestValueBST {
 		}
 	}
 
-	public int findKthLargestValueInBst(BST tree, int k) {
+	public static int findKthLargestValueInBst(BST tree, int k) {
 		// Write your code here.
 		return -1;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		BST root = new BST(15);
+		BST n1 = new BST(5);
+		BST n2 = new BST(20);
+		BST n3 = new BST(2);
+		BST n4 = new BST(5);
+		BST n5 = new BST(17);
+		BST n6 = new BST(22);
+		BST n7 = new BST(1);
+		BST n8 = new BST(8);
+		
+		
+		root.left = n1;
+		root.right = n2;
+		root.left.left = n3;
+		root.left.right = n4;
+		root.right.left = n5;
+		root.right.right = n6;
+		root.left.left.left = n7;
+		root.left.left.right = n8;
+		
+		System.out.println(findKthLargestValueInBst(root, 3));
 
 	}
 

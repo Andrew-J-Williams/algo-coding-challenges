@@ -94,24 +94,42 @@ public class BSTTraversal {
 		// 9. Once the previous logic completes, we now check and see if the right child node is not null, and if it isn't...
 		if(tree.right != null) {
 			
-			// ...we call our function recursively on the right child node and ArrayList. 
+			// ...we call our function recursively on the right child node and ArrayList. So from here, the previous logic repeats: all left values are added in followed by all the right
+			// values until both children nodes equal null. 
 			preOrderTraverse(tree.right, array);
 		}
 		
+		// 10. If both children nodes are null, we return the ArrayList. Using our example data, the values would be detected as follows: array.add(10) -> array.add(5) -> array.add(2) ->
+		// array.add(1) -> null -> array.add(5) -> null -> null -> return array -> array.add(15) -> null -> array.add(22) -> null -> null -> return array (final). 
 		return array;
 	}
 
+	// 11. Our final method, 'postOrderTraversal', again has the same arguments and code as the previous, yet once again runs the logic in a different order. For post-order traversal, 
+	// we are wanting to add values from the left to the right to the parent. Essentially, the last value added will always be the root.
 	public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
+		
+		// 12. We check and see if the left child node is not equal to null, and if it isn't...
 		if(tree.left != null) {
+			
+			// ...we call our function recursively on the left child node and the ArrayList. In the context of our test data, this process will continue until the left-most value of the
+			// left subtree is reached. Once the left child node is null, we proceed in the logic to the code below.
 			postOrderTraverse(tree.left, array);
 		}
 		
+		// 13. We then check to see if the right node is not equal to null, and if it isn't...
 		if(tree.right != null) {
+			
+			// ...we call our function recursively on the right child node and the ArrayList. Looking at the overall logic, our function is checking the left child node first and the
+			// right child node second. If the right child node is null, then the function proceeds to the next step...
 			postOrderTraverse(tree.right, array);
 		}
 		
+		// 14. If both children nodes are null, we add the value of the current node to our ArrayList. In doing this, node values are added from left to right to parent.
 		array.add(tree.value);
 		
+		// 15. After we add the value, we return our ArrayList. Using our example data, the values would be detected as follows (starting with the first value added): null ->
+		// null -> array.add(1) -> null -> array.add(2) -> null -> null -> array.add(5) -> array.add(5) -> null -> null -> null -> array.add(22) -> array.add(15) -> array.add(10). The
+		// pattern is consistent: left value, right value, parent value, which means that the root node's value will always be the last value added to the ArrayList.
 		return array;
 	}
 

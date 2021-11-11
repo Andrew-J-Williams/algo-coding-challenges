@@ -1,6 +1,7 @@
 package com.challenges.medium;
 
-import com.challenges.medium.BSTTraversal.BST;
+
+import java.util.*;
 
 /*
  * 
@@ -49,8 +50,31 @@ public class KthLargestValueBST {
 	}
 
 	public static int findKthLargestValueInBst(BST tree, int k) {
-		// Write your code here.
+
+		List<Integer> array = new ArrayList<>();
+		
+		List<Integer> sorted = searchTree(tree, array, k);
+		
+		if(sorted.get(k-1) != null) {
+			return sorted.get(k-1);
+		}
+		
 		return -1;
+	}
+	
+	public static List<Integer> searchTree(BST tree, List<Integer> array, int k){
+		
+		if(tree.right != null) {
+			searchTree(tree.right, array, k);
+		}
+		
+		array.add(tree.value);
+		
+		if(tree.left != null) {
+			searchTree(tree.left, array, k);
+		}
+		
+		return array;
 	}
 
 	public static void main(String[] args) {

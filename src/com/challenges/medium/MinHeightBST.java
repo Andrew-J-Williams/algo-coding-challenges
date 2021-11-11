@@ -20,6 +20,22 @@ import java.util.*;
 	A BST is valid if and only if all of its nodes are valid BST nodes.
 	
 	Note that the BST class has an 'insert' method you can use if you want.
+	
+	Sample Input:
+	array = [ 1, 2, 5, 7, 10, 13, 14, 15, 22 ];
+	
+	Sample Output:
+	
+	  tree =	   10
+				 /    \
+			    2      14
+			   /  \   /  \
+			  1    5 13   15
+			        \      \
+			  		 7      22
+	  
+	  // This is one example of a BST with minimum height that you could create from the input array. You can create other BSTs with minimum height from the same array. 
+	
  * 
  */
 
@@ -28,10 +44,30 @@ public class MinHeightBST {
 
 	public static BST minHeightBst(List<Integer> array) {
 		
+		return findMid(array, null, 0, array.size() - 1);
+	}
+	
+	public static BST findMid(List<Integer> array, BST bst, int start, int end) {
 		
+		if(end < start) {
+			return null;
+		}
 		
+		int mid = (start + end) / 2;
 		
-		return null;
+		int valueToAdd = array.get(mid);
+		
+		if(bst == null) {
+			bst = new BST(valueToAdd);
+		} else {
+			bst.insert(valueToAdd);
+		}
+		
+		findMid(array, bst, start, mid - 1);
+		findMid(array, bst, mid + 1, end);
+		
+		return bst;
+		
 	}
 
 	static class BST {

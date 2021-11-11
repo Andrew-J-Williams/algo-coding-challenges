@@ -35,25 +35,55 @@ import java.util.*;
  */
 
 public class ReconstructBST {
-	
+
 	static class BST {
-	    public int value;
-	    public BST left = null;
-	    public BST right = null;
+		public int value;
+		public BST left = null;
+		public BST right = null;
 
-	    public BST(int value) {
-	      this.value = value;
-	    }
-	  }
+		public BST(int value) {
+			this.value = value;
+		}
+	}
 
-	  public static BST reconstructBst(ArrayList<Integer> preOrderTraversalValues) {
-	    // Write your code here.
-	    return null;
-	  }
+	public static BST reconstructBst(List<Integer> preOrderTraversalValues) {
+		
+		// 1. We check and see if the size of our ArrayList is equal to 0. If it is...
+		if(preOrderTraversalValues.size() == 0) {
+			
+			// ...we return null since there are no values to iterate over.
+			return null;
+		}
+		
+		int current = preOrderTraversalValues.get(0);
+		int rightSubtreeRootIdx = preOrderTraversalValues.size();
+		
+		for(int i = 1; i < preOrderTraversalValues.size(); i++) {
+			
+			int value = preOrderTraversalValues.get(i);
+			
+			if(value >= current) {
+				rightSubtreeRootIdx = i;
+				break;
+			}
+		}
+		
+		BST leftSubtree = reconstructBst(preOrderTraversalValues.subList(1, rightSubtreeRootIdx));
+		
+		BST rightSubtree = reconstructBst(preOrderTraversalValues.subList(rightSubtreeRootIdx, preOrderTraversalValues.size()));
+		
+		BST bst = new BST(current);
+		
+		bst.left = leftSubtree;
+		bst.right = rightSubtree;
+		
+		return bst;
+	}
+	
 
 	public static void main(String[] args) {
 		ArrayList<Integer> array = new ArrayList<>();
-		
+
 		array.add(10);
 		array.add(4);
 		array.add(2);
@@ -62,7 +92,7 @@ public class ReconstructBST {
 		array.add(17);
 		array.add(19);
 		array.add(18);
-		
+
 		System.out.println(reconstructBst(array));
 
 	}

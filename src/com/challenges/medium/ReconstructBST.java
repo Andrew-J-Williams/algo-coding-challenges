@@ -14,13 +14,24 @@ public class ReconstructBST {
 	    }
 	  }
 
-	  public BST reconstructBst(ArrayList<Integer> preOrderTraversalValues) {
+	  public static BST reconstructBst(ArrayList<Integer> preOrderTraversalValues) {
 	    // Write your code here.
 	    return null;
 	  }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		ArrayList<Integer> array = new ArrayList<>();
+		
+		array.add(10);
+		array.add(4);
+		array.add(2);
+		array.add(1);
+		array.add(5);
+		array.add(17);
+		array.add(19);
+		array.add(18);
+		
+		System.out.println(reconstructBst(array));
 
 	}
 

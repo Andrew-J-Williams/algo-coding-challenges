@@ -51,22 +51,34 @@ public class KthLargestValueBST {
 
 	public static int findKthLargestValueInBst(BST tree, int k) {
 
+		// 1. We define an ArrayList that will hold our node values in the BST.
 		List<Integer> array = new ArrayList<>();
 		
+		// 2. We call our helper method 'searchTree', which is designed to traverse our BST is descending order and add each node value to the ArrayList. As a result, our array will
+		// become populated.
 		searchTree(tree, array);
 		
-		
+		// 3. We return the value of our ArrayList at the index of k-1, since the ArrayList begins with an index of 0.
 		return array.get(k-1);
 	}
 	
+	// 4. Our helper method, 'searchTree', takes in a BST node as well as an ArrayList of Integers. This method is also recursive since it calls itself within its own code.
 	public static void searchTree(BST tree, List<Integer> array){
-		
+	
+		// 5. We check and see if the current node is equal to null. If it is, we know that we have reached the end of a branch on the subtree. As a result, we simply use return to 
+		// exit the function.
 		if(tree == null) return;
 		
+		// 6. We call our 'searchTree' method on the right child node and the ArrayList. In doing this, if we are starting from the root, the function will work its way down to the
+		// right-most child node on the right subtree. Once the children node of that parent node come back as null, the logic advances.
 		searchTree(tree.right, array);
 		
+		// 7. We add the value of the current node to our ArrayList.
 		array.add(tree.value);
 		
+		// 8. Finally, we call the method again on the left child node and the ArrayList. If the left child node isn't null, we repeat the previous logic and check for the values of the
+		// right and parent nodes. But once the left and right child node equals null, we know we've reached the end of that branch in the subtree and add its value to the ArrayList. 
+		// The program is essentially the inverse of in-order traversal (learned in a previous challenge), so we the order of node values added is as follows: right -> parent -> left.
 		searchTree(tree.left, array);
 		
 	}

@@ -9,7 +9,20 @@ package com.challenges.medium;
 	A Binary Tree is height balanced if for each node in the tree, the difference between the height of its left subtree and the height of its source subtree is at most 1.
 	
 	Each BinaryTree has an integer value, a left child node, and a right child node. Children nodes can either be BinaryTree nodes themselves or None/null.
-	 
+	
+	Sample Input:
+	
+		tree =	   1
+				 /   \
+			    2     3
+			   / \     \
+			  4   5     6
+			     / \  
+			    7   8
+			    
+	Sample Output: 
+	true
+		 
  * 
  */
 

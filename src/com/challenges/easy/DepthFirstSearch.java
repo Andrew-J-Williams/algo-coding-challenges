@@ -28,7 +28,6 @@ import java.util.List;
  * 
  */
 
-
 public class DepthFirstSearch {
 
 	// Do not edit the class below except
@@ -62,8 +61,6 @@ public class DepthFirstSearch {
 
 	public static void main(String[] args) {
 		List<String> array = new ArrayList<>();
-		
-		
 
 	}
 

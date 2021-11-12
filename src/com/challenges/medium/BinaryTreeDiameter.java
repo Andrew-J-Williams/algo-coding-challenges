@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import com.challenges.medium.InvertBinaryTree.BinaryTree;
+
 /*
  * 
 	BinaryTreeDiameter
@@ -41,13 +43,32 @@ public class BinaryTreeDiameter {
 		}
 	}
 
-	public int binaryTreeDiameter(BinaryTree tree) {
+	public static int binaryTreeDiameter(BinaryTree tree) {
 		// Write your code here.
 		return -1;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		BinaryTree root = new BinaryTree(1);
+		BinaryTree n1 = new BinaryTree(2);
+		BinaryTree n2 = new BinaryTree(3);
+		BinaryTree n3 = new BinaryTree(4);
+		BinaryTree n4 = new BinaryTree(5);
+		BinaryTree n5 = new BinaryTree(6);
+		BinaryTree n6 = new BinaryTree(7);
+		BinaryTree n7 = new BinaryTree(8);
+		BinaryTree n8 = new BinaryTree(9);
+		
+		root.left = n2;
+		root.right = n1;
+		root.left.left = n6;
+		root.left.right = n3;
+		root.left.left.left = n7;
+		root.left.right.right = n4;
+		root.left.left.left.left = n8;
+		root.left.right.right.right = n5;
+		
+		System.out.println(binaryTreeDiameter(root));
 	}
 
 }

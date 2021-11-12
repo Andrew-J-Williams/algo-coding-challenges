@@ -1,6 +1,6 @@
 package com.challenges.medium;
 
-import com.challenges.medium.InvertBinaryTree.BinaryTree;
+import java.util.*;
 
 /*
  * 
@@ -42,11 +42,27 @@ public class BinaryTreeDiameter {
 			this.value = value;
 		}
 	}
+	
+	static class TreeInfo {
+		public int diameter;
+		public int height;
+		
+		public TreeInfo(int diameter, int height) {
+			this.diameter = diameter;
+			this.height = height;
+		}
+	}
 
 	public static int binaryTreeDiameter(BinaryTree tree) {
 		// Write your code here.
 		return -1;
 	}
+	
+	public TreeInfo getTreeInfo(BinaryTree) {
+		
+	}
+	
+	
 
 	public static void main(String[] args) {
 		BinaryTree root = new BinaryTree(1);

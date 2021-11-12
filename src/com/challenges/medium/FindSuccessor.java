@@ -1,6 +1,6 @@
 package com.challenges.medium;
 
-// import java.util.*;
+import java.util.*;
 
 /*
  * 
@@ -39,8 +39,33 @@ public class FindSuccessor {
 	}
 
 	public static BinaryTree findSuccessor(BinaryTree tree, BinaryTree node) {
-		// Write your code here.
-		return null;
+		
+		
+		List<BinaryTree> results = findSuccessor(tree, node, new ArrayList<BinaryTree>());
+		
+		int i = results.indexOf(node);
+		
+		if(i == -1 || i == results.size() - 1) {
+			return null;
+		} else {
+			return results.get(i + 1);
+		}
+		
+	}
+	
+	public static List<BinaryTree> findSuccessor(BinaryTree tree, BinaryTree node, List<BinaryTree> array){
+		
+		if(tree.left != null) {
+			findSuccessor(tree.left, node, array);
+		}
+		
+		array.add(tree);
+	
+		if(tree.right != null) {
+			findSuccessor(tree.right, node, array);
+		}
+		
+		return array;
 	}
 
 	public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import com.challenges.medium.BSTTraversal.BST;
+
 /*
  * 
 	Invert Binary Tree
@@ -48,8 +50,26 @@ public class InvertBinaryTree {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		BinaryTree root = new BinaryTree(1);
+		BinaryTree n1 = new BinaryTree(2);
+		BinaryTree n2 = new BinaryTree(3);
+		BinaryTree n3 = new BinaryTree(4);
+		BinaryTree n4 = new BinaryTree(5);
+		BinaryTree n5 = new BinaryTree(6);
+		BinaryTree n6 = new BinaryTree(7);
+		BinaryTree n7 = new BinaryTree(8);
+		BinaryTree n8 = new BinaryTree(9);
+		
+		root.left = n1;
+		root.right = n2;
+		root.left.left = n3;
+		root.left.right = n4;
+		root.right.left = n5;
+		root.right.right = n6;
+		root.left.left.left = n7;
+		root.left.left.right = n8;
+	
+		invertBinaryTree(root);
 	}
 
 }

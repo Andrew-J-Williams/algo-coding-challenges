@@ -54,12 +54,33 @@ public class BinaryTreeDiameter {
 	}
 
 	public static int binaryTreeDiameter(BinaryTree tree) {
-		// Write your code here.
-		return -1;
+
+		return getTreeInfo(tree).diameter;
+		
 	}
 	
-	public TreeInfo getTreeInfo(BinaryTree) {
+	public static TreeInfo getTreeInfo(BinaryTree tree) {
 		
+		// We check and see if our current node is equal to null, and if it is...
+		if(tree == null) {
+			
+			// ...we return a new instance of TreeInfo with a diameter and height of 0. The reason we do this is because null indicates we have reached a base case in our Binary Tree.
+			return new TreeInfo(0, 0);
+		}
+		
+		TreeInfo leftTree = getTreeInfo(tree.left);
+		TreeInfo rightTree = getTreeInfo(tree.right);
+		
+		int longestPath = leftTree.height + rightTree.height;
+		
+		int maxDiameter = Math.max(leftTree.diameter, rightTree.diameter);
+		
+		int currentDiameter = Math.max(longestPath, maxDiameter);
+		
+		int currentHeight = 1 + Math.max(leftTree.height, rightTree.height);
+		
+		
+		return new TreeInfo(currentDiameter, currentHeight);
 	}
 	
 	

@@ -18,7 +18,16 @@ import java.util.*;
 	
 	Sample Input:
 	
+	  tree =	   1
+				 /   \
+			    2     3
+			   / \   
+			  4   5  
+			 /       
+			6       
 	
+	  node = 5
+		
 	Sample Output:
 	1
 	// Thi's tree's in-order traversal is: 6 -> 4 -> 2 -> 5 -> 1 -> 3. 1 comes immediately after the 5.

@@ -51,14 +51,34 @@ public class HeightBalancedBinaryTree {
 	}
 
 	public static boolean heightBalancedBinaryTree(BinaryTree tree) {
-
+				
+		return checkHeight(tree).balanced;
 		
-		
-		
-		return false;
 	}
 	
-	
+	public static TreeInfo checkHeight(BinaryTree tree) {
+		
+		if(tree == null) {
+			return new TreeInfo(0, true);
+		}
+		
+		TreeInfo left = checkHeight(tree.left);
+		TreeInfo right = checkHeight(tree.right);
+		
+		int difference = Math.abs(left.height - right.height);
+		
+		boolean balanced = left.balanced && right.balanced;
+		
+		if(difference > 1 || !balanced) {
+			balanced = false;
+		} else {
+			balanced = true;
+		}
+		
+		int currentHeight = 1 + (Math.max(left.height, right.height));
+		
+		return new TreeInfo(currentHeight, balanced);
+	}
 
 	public static void main(String[] args) {
 		

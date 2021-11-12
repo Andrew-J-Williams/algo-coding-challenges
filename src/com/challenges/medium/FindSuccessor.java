@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import com.challenges.medium.BinaryTreeDiameter.BinaryTree;
+
 public class FindSuccessor {
 
 	static class BinaryTree {
@@ -13,13 +15,26 @@ public class FindSuccessor {
 		}
 	}
 
-	public BinaryTree findSuccessor(BinaryTree tree, BinaryTree node) {
+	public static BinaryTree findSuccessor(BinaryTree tree, BinaryTree node) {
 		// Write your code here.
 		return null;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		BinaryTree root = new BinaryTree(1);
+		BinaryTree n1 = new BinaryTree(2);
+		BinaryTree n2 = new BinaryTree(3);
+		BinaryTree n3 = new BinaryTree(4);
+		BinaryTree n4 = new BinaryTree(5);
+		BinaryTree n5 = new BinaryTree(6);
+		
+		root.left = n1;
+		root.right = n2;
+		root.left.left = n3;
+		root.left.right = n4;
+		root.left.left.left = n5;
+		
+		System.out.println(findSuccessor(root, n4));
 
 	}
 

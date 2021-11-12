@@ -35,12 +35,19 @@ public class InvertBinaryTree {
 
 	public static void invertBinaryTree(BinaryTree tree) {
 		
+		// 1. First, we check and see if our current node is equal to null. If it is, we simply return our function, effectively ending the repeating logic (as is seen below).
 		if(tree == null) return;
 		
+		// 2. We create a temporary variable that holds the left child node of the current node.
 		BinaryTree temp = tree.left;
+		
+		// 3. We set the left child node equal to the right child node.
 		tree.left = tree.right;
+		
+		// 4. We set the right child node equal to our temporary variable. All we've done is a simple swap of left for right.
 		tree.right = temp;
 		
+		// 5. We call our function recursively on both children nodes, repeating the logic until all child nodes are null.
 		invertBinaryTree(tree.left);
 		invertBinaryTree(tree.right);
 		

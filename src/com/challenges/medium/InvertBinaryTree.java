@@ -1,7 +1,5 @@
 package com.challenges.medium;
 
-import com.challenges.medium.BSTTraversal.BST;
-
 /*
  * 
 	Invert Binary Tree
@@ -36,7 +34,16 @@ import com.challenges.medium.BSTTraversal.BST;
 public class InvertBinaryTree {
 
 	public static void invertBinaryTree(BinaryTree tree) {
-		// Write your code here.
+		
+		if(tree == null) return;
+		
+		BinaryTree temp = tree.left;
+		tree.left = tree.right;
+		tree.right = temp;
+		
+		invertBinaryTree(tree.left);
+		invertBinaryTree(tree.right);
+		
 	}
 
 	static class BinaryTree {

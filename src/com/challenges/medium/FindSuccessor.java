@@ -38,31 +38,43 @@ public class FindSuccessor {
 		}
 	}
 
+	
 	public static BinaryTree findSuccessor(BinaryTree tree, BinaryTree node) {
 		
+		// 1. We create a variable that will hold the returned ArrayList from our helper function, which takes in our BinaryTree as well as an ArrayList. The helper function
+		// performs an in-order traversal (first seen in the BSTTraversal class), adding all the nodes to the ArrayList in the expected order for this traversal method.
+		List<BinaryTree> results = findSuccessor(tree, new ArrayList<BinaryTree>());
 		
-		List<BinaryTree> results = findSuccessor(tree, node, new ArrayList<BinaryTree>());
-		
+		// 2. We create a variable that will hold the index of where our node is in the ArrayList (if it is not present in the List, the index value will be -1).
 		int i = results.indexOf(node);
 		
+		// 3. We check if i is equal to -1 or i is equal to the last index value in the ArrayList, and if either is true...
 		if(i == -1 || i == results.size() - 1) {
+			
+			// ...we return null since the node is either not present in our ArrayList or the node in question is the final node in the ArrayList and would not have a successor.
 			return null;
+		
+		// 4. Otherwise, if our 'i' is a valid value and isn't the last element... 
 		} else {
+			
+			// ...we return the node directly after it in the ArrayList. We do this because we know that given the nodes in our ArrayList are correctly sorted according to in-order
+			// traversal, the successor of our node will be the element directly to its right in the ArrayList.
 			return results.get(i + 1);
 		}
 		
 	}
 	
-	public static List<BinaryTree> findSuccessor(BinaryTree tree, BinaryTree node, List<BinaryTree> array){
+	// 5. Check out the 'BSTTraversal' class to get a refresher on how this recursive function works.
+	public static List<BinaryTree> findSuccessor(BinaryTree tree, List<BinaryTree> array){
 		
 		if(tree.left != null) {
-			findSuccessor(tree.left, node, array);
+			findSuccessor(tree.left, array);
 		}
 		
 		array.add(tree);
 	
 		if(tree.right != null) {
-			findSuccessor(tree.right, node, array);
+			findSuccessor(tree.right, array);
 		}
 		
 		return array;

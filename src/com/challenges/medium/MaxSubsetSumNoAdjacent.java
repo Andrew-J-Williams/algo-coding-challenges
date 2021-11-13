@@ -25,7 +25,9 @@ public class MaxSubsetSumNoAdjacent {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] array = {75, 105, 120, 75, 90, 135};
+		
+		System.out.println(maxSubsetSumNoAdjacent(array));
 
 	}
 

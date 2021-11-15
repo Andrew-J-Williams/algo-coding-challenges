@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import java.util.*;
+
 /*
  * 
 	Min Number Of Coins For Change
@@ -24,13 +26,42 @@ package com.challenges.medium;
 public class MinNumberOfCoinsForChange {
 	
 	public static int minNumberOfCoinsForChange(int n, int[] denoms) {
-	    // Write your code here.
-	    return -1;
+		
+		int[] coins = new int[n + 1];
+		Arrays.fill(coins, Integer.MAX_VALUE);
+		coins[0] = 0;
+		
+		int compare = 0;
+		
+		for(int denom : denoms) {
+			
+			for(int i = 0; i < n + 1; i++) {
+				
+				
+				if(denom <= i) {
+					
+					if(coins[i - denom] == Integer.MAX_VALUE) {
+						compare = coins[i - denom];
+					} else {
+						compare = coins[i - denom] + 1;
+					}
+					
+					coins[i] = Math.min(coins[i], compare);
+				}
+				
+				
+			}
+			
+			System.out.println(Arrays.toString(coins));
+			
+		}
+		
+		return coins[n] != Integer.MAX_VALUE ? coins[n] : -1;
 	  }
 
 	public static void main(String[] args) {
-		int n = 7;
-		int[] denoms = { 1, 5, 10 };
+		int n = 6;
+		int[] denoms = {1, 2, 4};
 		
 		System.out.println(minNumberOfCoinsForChange(n, denoms));
 

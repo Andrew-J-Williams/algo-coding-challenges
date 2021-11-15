@@ -8,7 +8,10 @@ public class LevenshteinDistance {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		String str1 = "abc";
+		String str2 = "yabd";
+		
+		System.out.println(levenshteinDistance(str1, str2));
 
 	}
 

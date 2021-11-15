@@ -21,15 +21,28 @@ package com.challenges.medium;
 public class NumberOfWaysToMakeChange {
 	
 	public static int numberOfWaysToMakeChange(int n, int[] denoms) {
-	    // Write your code here.
-	    return -1;
+
+		int[] ways = new int[n + 1];
+		
+		ways[0] = 1;
+		
+		for(int denom : denoms) {
+			for(int i = 1; i < n + 1; i++) {
+				if(denom <= i) {
+					ways[i] += ways[i - denom];
+				}
+			}
+			
+		}
+		
+		return ways[n];	
 	  }
 
 	public static void main(String[] args) {
 		int n = 6;
 		int[] denoms = { 1, 5 };
 		
-		numberOfWaysToMakeChange(n, denoms);
+		System.out.println(numberOfWaysToMakeChange(n, denoms));
 
 	}
 

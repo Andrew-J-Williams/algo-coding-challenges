@@ -8,7 +8,10 @@ public class MinNumberOfCoinsForChange {
 	  }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int n = 7;
+		int[] denoms = { 1, 5, 10 };
+		
+		System.out.println(minNumberOfCoinsForChange(n, denoms));
 
 	}
 

@@ -56,7 +56,36 @@ public class MaxSubsetSumNoAdjacent {
 			// 8. We then set 'first' equal to the current value, which in this example is 9.
 			first = current;
 			
-			// Breaking down the logic from Step 3 onward: (1) we check and see if the first or second value of the array is the greatest value, (2)
+			// Breaking down the logic from Step 3 onward: (1) we check and see if the first or second value of the array is the greatest value, (2) starting at the 3rd element, we
+			// check and see if either the greatest element returned between the first and second elements is greater than the first element plus the third (non-adjacent) element.
+			// Whatever the result will become the value of first and whatever value first had becomes the value of second. The process repeats until the end of the array is
+			// reached. Using our example data: 
+			
+			/*
+			 
+			 i = 2
+			 current = Math.max(4, 4 + 5) = 9
+			 second = 4
+			 first = 9
+			 
+			 i = 3
+			 current = Math.max(9, 4 + 200) = 204
+			 second = 9
+			 first = 204
+			 
+			 i = 4
+			 current = Math.max(204, 9 + 5) = 204
+			 second = 204
+			 first = 204
+			 
+			 i = 5
+			 current = Math.max(204, 204 + 3) = 207
+			 second = 204
+			 first = 207
+			 
+			 return first = 207 
+			  
+			 */
 		}
 		
 		return first;

@@ -26,7 +26,10 @@ public class NumberOfWaysToMakeChange {
 	  }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int n = 6;
+		int[] denoms = { 1, 5 };
+		
+		numberOfWaysToMakeChange(n, denoms);
 
 	}
 

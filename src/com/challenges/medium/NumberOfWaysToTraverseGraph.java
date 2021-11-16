@@ -49,10 +49,6 @@ public class NumberOfWaysToTraverseGraph {
 				}	
 			}
 		}
-		
-		System.out.println(Arrays.toString(grid[0]));
-		System.out.println(Arrays.toString(grid[1]));
-		System.out.println(Arrays.toString(grid[2]));
 			
 		return grid[height - 1][width - 1];
 	}
@@ -69,8 +65,8 @@ public class NumberOfWaysToTraverseGraph {
 
 	public static void main(String[] args) {
 		
-		int width = 4;
-		int height = 3;
+		int width = 3;
+		int height = 2;
 		
 		System.out.println(numberOfWaysToTraverseGraph(width, height));
 

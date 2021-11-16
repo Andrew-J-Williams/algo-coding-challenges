@@ -21,50 +21,34 @@ public class LevenshteinDistance {
 
 	public static int levenshteinDistance(String str1, String str2) {
 		
-		// 1. We create two variables: one designed to hold the smaller of our two strings and the other to hold the bigger of the two.
-		String small = str1.length() < str2.length() ? str1 : str2;
-		String big = str1.length() >= str2.length() ? str1 : str2;
+		// 1. We created a two dimensional array with our 2nd string's length plus 1 representing the rows and our 1st string's length plus 1 representing our columns.
+		// We add 1 to account for blank spaces/empty strings.
+		int[][] edits = new int[str2.length() + 1][str1.length() + 1];
 		
-		
-		int[] evenEdits = new int[small.length() + 1];
-		int[] oddEdits = new int[small.length() + 1];
-		
-		for(int i = 0; i < small.length() + 1; i++) {
-			evenEdits[i] = i;
-		}
-		
-		int[] currentEdits;
-		int[] previousEdits;
-		
-		for(int i = 1; i < big.length() + 1; i++) {
-			
-			
-			if(i % 2 == 0) {
-				currentEdits = oddEdits;
-				previousEdits = evenEdits;
-			} else {
-				currentEdits = evenEdits;
-				previousEdits = oddEdits;
+		for(int i = 0; i < str2.length() + 1; i++) {
+			for(int j = 0; j < str1.length() + 1; j++) {
+				
+				edits[i][j] = j;
+				
 			}
 			
-			
-			currentEdits[0] = i;
-			
-			for(int j = 1; j < small.length() + 1; j++) {
+			edits[i][0] = i;
+		}
+		
+		
+		for(int i = 1; i < str2.length() + 1; i++) {
+			for(int j = 1; j < str1.length() + 1; j++) {
 				
-				if(big.charAt(i - 1) == small.charAt(j-1)) {
-					currentEdits[j] = previousEdits[j - 1];
+				if(str2.charAt(i - 1) == str1.charAt(j - 1)) {
+					edits[i][j] = edits[i - 1][j - 1];
 				} else {
-					currentEdits[j] = 1 + Math.min(previousEdits[j -1], Math.min(previousEdits[j], currentEdits[j - 1]));
+					edits[i][j] = 1 + Math.min(edits[i - 1][j - 1], Math.min(edits[i - 1][j], edits[i][j - 1]));
 				}
 				
 			}
-			
-			
-			
 		}
-		
-		return big.length() % 2 == 0 ? evenEdits[small.length()] : oddEdits[small.length()];
+				
+		return edits[str2.length()][str1.length()];
 	}
 
 	public static void main(String[] args) {

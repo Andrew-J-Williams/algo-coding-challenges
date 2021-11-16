@@ -34,7 +34,10 @@ package com.challenges.medium;
 public class NumberOfWaysToTraverseGraph {
 
 	public static int numberOfWaysToTraverseGraph(int width, int height) {
-		// Write your code here.
+
+		int[][] grid = new int[width][height];
+		
+		
 		return -1;
 	}
 

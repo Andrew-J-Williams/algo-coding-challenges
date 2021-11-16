@@ -40,13 +40,7 @@ public class NumberOfWaysToTraverseGraph {
 			
 		for(int i = 0; i < height; i++) {
 			for(int j = 0; j < width; j++) {
-				if(i == 0 && j == 0) {
-					grid[i][j] = 0;
-				} else if((i == height - 1 && j == 0) || (i == 0 && j == width - 1)) {
-					grid[i][j] = 1;
-				} else {
-					checkSquare(i, j, grid);
-				}	
+				checkSquare(i, j, grid);
 			}
 		}
 			

@@ -1,5 +1,6 @@
 package com.challenges.medium;
 
+import java.util.Arrays;
 
 /*
  * 
@@ -35,10 +36,35 @@ public class NumberOfWaysToTraverseGraph {
 
 	public static int numberOfWaysToTraverseGraph(int width, int height) {
 
-		int[][] grid = new int[width][height];
+		int[][] grid = new int[height][width];
+			
+		for(int i = 0; i < height; i++) {
+			for(int j = 0; j < width; j++) {
+				if(i == 0 && j == 0) {
+					grid[i][j] = 0;
+				} else if((i == height - 1 && j == 0) || (i == 0 && j == width - 1)) {
+					grid[i][j] = 1;
+				} else {
+					checkSquare(i, j, grid);
+				}	
+			}
+		}
 		
+		System.out.println(Arrays.toString(grid[0]));
+		System.out.println(Arrays.toString(grid[1]));
+		System.out.println(Arrays.toString(grid[2]));
+			
+		return grid[height - 1][width - 1];
+	}
+	
+	public static void checkSquare(int i, int j, int[][] grid) {
 		
-		return -1;
+		if(i - 1 < 0 || j - 1 < 0) {
+			grid[i][j] += 1;
+		} else {
+			grid[i][j] = grid[i - 1][j] + grid[i][j - 1];
+		}
+		
 	}
 
 	public static void main(String[] args) {

@@ -21,6 +21,9 @@ public class LevenshteinDistance {
 
 	public static int levenshteinDistance(String str1, String str2) {
 		
+		// 1. We create two variables: one designed to hold the smaller of our two strings and the other to hold the bigger of the two.
+		String small = str1.length() < str2.length() ? str1 : str2;
+		String big = str1.length() >= str2.length() ? str1 : str2;
 		
 		
 		

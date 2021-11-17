@@ -24,7 +24,13 @@ package com.challenges.medium;
 public class SingleCycleCheck {
 
 	public static boolean hasSingleCycle(int[] array) {
-		// Write your code here.
+		
+		
+		for(int i = 0; i < array.length; i++) {
+			
+			
+		}
+		
 		return false;
 	}
 

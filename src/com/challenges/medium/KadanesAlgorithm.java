@@ -18,40 +18,28 @@ package com.challenges.medium;
 public class KadanesAlgorithm {
 
 	public static int kadanesAlgorithm(int[] array) {
-		int maxSum = 0;
+	
+		int maxSum = Integer.MIN_VALUE;
 		int current = 0;
-		
-		if(array.length == 1){
-			return array[0];
-		}
 		
 		for(int i = 0; i < array.length; i++) {
 			
-			if(current + array[i] < 0) {
-				current = 0;
-				continue;
-			}
-			
-			current += array[i];
+			current = Math.max(array[i], current + array[i]);
 			
 			if(maxSum < current) {
 				maxSum = current;
 			}
-			
 		}
 		
-		if(maxSum == 0){
-			return -1;
-		} else {
-			return maxSum;
-		}
 		
+		return maxSum;
 	}
 
 	public static void main(String[] args) {
 		int [] array1 = { 3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4 };
+		int [] array2 = { -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 };
 		
-		System.out.println(kadanesAlgorithm(array1));
+		System.out.println(kadanesAlgorithm(array2));
 	}
 
 }

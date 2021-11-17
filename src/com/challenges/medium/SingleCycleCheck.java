@@ -8,8 +8,9 @@ public class SingleCycleCheck {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] array = { 2, 3, 1, -4, -4, 2 };
+		
+		System.out.println(hasSingleCycle(array));
 	}
 
 }

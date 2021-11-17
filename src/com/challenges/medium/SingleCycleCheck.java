@@ -24,14 +24,31 @@ package com.challenges.medium;
 public class SingleCycleCheck {
 
 	public static boolean hasSingleCycle(int[] array) {
+
+		int n = 0;
+		int i = 0;
 		
-		
-		for(int i = 0; i < array.length; i++) {
+		while(n < array.length) {
+			
+			if(n > 0 && i == 0) {
+				return false;
+			} else {
+				n++;
+				i = getNextI(i, array);
+			}
 			
 			
 		}
 		
-		return false;
+		return i == 0;
+	}
+	
+	public static int getNextI(int i, int[] array) {
+		
+		int jump = array[i];
+		int nextI = (i + jump) % array.length;
+		
+		return nextI >= 0 ? nextI : nextI + array.length;
 	}
 
 	public static void main(String[] args) {

@@ -46,6 +46,7 @@ public class NumberOfWaysToTraverseGraph {
 			
 		return grid[height - 1][width - 1];
 	}
+
 	
 	public static void checkSquare(int i, int j, int[][] grid) {
 		

@@ -18,8 +18,33 @@ package com.challenges.medium;
 public class KadanesAlgorithm {
 
 	public static int kadanesAlgorithm(int[] array) {
-		// Write your code here.
-		return -1;
+		int maxSum = 0;
+		int current = 0;
+		
+		if(array.length == 1){
+			return array[0];
+		}
+		
+		for(int i = 0; i < array.length; i++) {
+			
+			if(current + array[i] < 0) {
+				current = 0;
+				continue;
+			}
+			
+			current += array[i];
+			
+			if(maxSum < current) {
+				maxSum = current;
+			}
+			
+		}
+		
+		if(maxSum == 0){
+			return -1;
+		} else {
+			return maxSum;
+		}
 	}
 
 	public static void main(String[] args) {

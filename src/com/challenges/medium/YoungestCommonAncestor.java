@@ -25,8 +25,11 @@ public class YoungestCommonAncestor {
 	}
 
 	public static void main(String[] args) {
-		AncestralTree top = new AncestralTree('A');
-
+		AncestralTree topAncestor = new AncestralTree('A');
+		AncestralTree descendantOne = new AncestralTree('E');
+		AncestralTree descendantTwo = new AncestralTree('I');
+		
+		System.out.println(getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo));
 	}
 
 }

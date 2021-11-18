@@ -37,6 +37,18 @@ package com.challenges.medium;
 	 	[ 1, 0, 0, 0, 0, 1 ],
 	] 
 	
+	// The islands that were removed can be clearly seen here:
+	
+	[
+		[ ,  ,  ,  ,  ,  ].
+	 	[ , 1,  ,  ,  ,  ],
+	 	[ ,  , 1,  ,  ,  ],
+	 	[ ,  ,  ,  ,  ,  ],
+	 	[ ,  , 1, 1,  ,  ],
+	 	[ ,  ,  ,  ,  ,  ],
+	]  
+	 
+	
  * 
  */
 

@@ -37,8 +37,40 @@ package com.challenges.medium;
 public class YoungestCommonAncestor {
 
 	public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, AncestralTree descendantOne, AncestralTree descendantTwo) {
-		// Write your code here.
-		return topAncestor; // Replace this line
+		if(descendantOne == topAncestor || descendantTwo == topAncestor) {
+			return topAncestor;
+		}
+		
+		return checkAncestor(descendantOne, descendantTwo); // Replace this line
+	}
+	
+	public static AncestralTree checkAncestor(AncestralTree a, AncestralTree b) {
+		
+		if(a.ancestor == b.ancestor) {
+			System.out.println(a.ancestor.name);
+			return a.ancestor;
+		}
+		
+		if(a == b.ancestor){
+			System.out.println(a.name);
+			return a;
+		}
+		
+		if(b == a.ancestor){
+			System.out.println(b.name);
+			return b;
+		}
+		
+		if(a.name > b.name) {
+			System.out.println(a.name);
+			System.out.println(b.name);
+			return checkAncestor(a.ancestor, b);
+		} else {
+			System.out.println(a.name);
+			System.out.println(b.name);
+			return checkAncestor(a, b.ancestor);
+		}
+	
 	}
 
 	static class AncestralTree {

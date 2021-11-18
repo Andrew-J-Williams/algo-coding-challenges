@@ -104,7 +104,7 @@ public class YoungestCommonAncestor {
 /*
  * 
 	public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, AncestralTree descendantOne, AncestralTree descendantTwo) {
-	
+	 
 		int depth1 = getDescendantDepth(descendantOne, topAncestor);
 		int depth2 = getDescendantDepth(descendantTwo, topAncestor);
 	

@@ -49,27 +49,36 @@ public class RiverSizes {
 		
 		for(int i = 0; i < matrix.length; i++) {
 			for(int k = 0; k < matrix[i].length; k++) {
-				int current = matrix[i][k];
-				boolean checkBool = matrix2[i][k];
-				
-				if(checkBool == true) {
+
+				if(matrix2[i][k]) {
 					continue;
 				}
 				
-				if(current == 1) {
-					matrix2[i][k] = true;
-				} else {
-					matrix2[i][k] = true;
-					continue;
-				}
-					
+				traverseNode(i, k, matrix, matrix2, sizes);
 			}
 		}
 
 		return sizes;
 	}
 	
-	public static int findLength(int i, int k, int[][] matrix, boolean[][] matrix2) {
+	public static void traverseNode(int i, int k, int[][] value, boolean[][] visited, List<Integer> sizes) {
+		
+		int currentSize = 0;
+		
+		Stack<Integer[]> nodesToExplore = new Stack<Integer[]>();
+		
+		nodesToExplore.push(new Integer[] {i, k});
+		
+		while(!nodesToExplore.isEmpty()) {
+			
+			Integer[] currentNode = nodesToExplore.pop();
+			
+			
+		}
+		
+	}
+	
+	public static int findLength(int i, int k, int[][] current, boolean[][] checked) {
 		
 		
 		return -1;

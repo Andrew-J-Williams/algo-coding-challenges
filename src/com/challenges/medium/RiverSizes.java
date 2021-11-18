@@ -50,13 +50,31 @@ public class RiverSizes {
 		for(int i = 0; i < matrix.length; i++) {
 			for(int k = 0; k < matrix[i].length; k++) {
 				int current = matrix[i][k];
+				boolean checkBool = matrix2[i][k];
 				
+				if(checkBool == true) {
+					continue;
+				}
 				
+				if(current == 1) {
+					matrix2[i][k] = true;
+				} else {
+					matrix2[i][k] = true;
+					continue;
+				}
+					
 			}
 		}
 
 		return sizes;
 	}
+	
+	public static int findLength(int i, int k, int[][] matrix, boolean[][] matrix2) {
+		
+		
+		return -1;
+	}
+	
 
 	public static void main(String[] args) {
 		int[][] matrix1 = { { 1, 0, 0, 1, 0 }, { 1, 0, 1, 0, 0 }, { 0, 0, 1, 0, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 1, 1, 0 } };

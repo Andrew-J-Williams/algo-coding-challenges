@@ -43,12 +43,12 @@ public class RiverSizes {
 
 	public static List<Integer> riverSizes(int[][] matrix) {
 
-		List<Integer> sizes = new ArrayList<>();
+		List<Integer> sizes = new ArrayList<Integer>();
 
 		boolean[][] matrix2 = new boolean[matrix.length][matrix[0].length];
 		
 		for(int i = 0; i < matrix.length; i++) {
-			for(int k = 0; k < matrix[i].length; k++) {
+			for(int k = 0; k < matrix[0].length; k++) {
 
 				if(matrix2[i][k]) {
 					continue;
@@ -73,15 +73,60 @@ public class RiverSizes {
 			
 			Integer[] currentNode = nodesToExplore.pop();
 			
+			i = currentNode[0];
+			k = currentNode[1];
 			
+			if(visited[i][k]) {
+				continue;
+			} else {
+				visited[i][k] = true;
+			}
+				
+			if(value[i][k] == 0) {
+				continue;
+			} else {
+				currentSize++;
+			}
+				
+			List<Integer[]> neighbors = getNeighbors(i, k, value, visited);
+			
+			for(Integer[] neighbor : neighbors) {
+				nodesToExplore.add(neighbor);
+			}
+			
+			
+		}
+		
+		if(currentSize > 0) {
+			sizes.add(currentSize);
 		}
 		
 	}
 	
-	public static int findLength(int i, int k, int[][] current, boolean[][] checked) {
+	public static List<Integer[]> getNeighbors(int i, int k, int[][] value, boolean[][] visited) {
 		
+		List<Integer[]> neighbors = new ArrayList<Integer[]>();
 		
-		return -1;
+		// top
+		if(i > 0 && !visited[i - 1][k]) {
+			neighbors.add(new Integer[] {i - 1, k});
+		}
+		
+		// bottom
+		if(i < value.length - 1 && !visited[i + 1][k]) {
+			neighbors.add(new Integer[] {i + 1, k});
+		}
+		
+		//left
+		if(k > 0 && !visited[i][k - 1]) {
+			neighbors.add(new Integer[] {i, k - 1});
+		}
+		
+		if(k < value[i].length - 1 && !visited[i][k + 1]) {
+			neighbors.add(new Integer[] {i, k + 1});
+		}
+		
+		return neighbors;
 	}
 	
 

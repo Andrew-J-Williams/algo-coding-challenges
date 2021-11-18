@@ -37,41 +37,67 @@ package com.challenges.medium;
 public class YoungestCommonAncestor {
 
 	public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, AncestralTree descendantOne, AncestralTree descendantTwo) {
+		
+		// 1. We check and see if either our first or second descendant is equal to the top ancestor. If this is the case, it means that one of the two is the root of the tree and
+		// will not have an ancestor beyond them. By default, since the top ancestor is its own ancestor, the common ancestor between the two will be the top ancestor. Thus...
 		if(descendantOne == topAncestor || descendantTwo == topAncestor) {
+			
+			// ...we return our 'topAncestor' as the result.
 			return topAncestor;
 		}
 		
-		return checkAncestor(descendantOne, descendantTwo); // Replace this line
+		// 2. If neither descendant is equal to the top ancestor node, we return the result of our helper function 'checkAncestor', which will determine the youngest common 
+		// ancestor between the two descendants, returning an AncestralTree as the result.
+		return checkAncestor(descendantOne, descendantTwo);
 	}
 	
+	// 3. Our helper function, 'checkAncestor', takes in 2 arguments: two AncenstralTrees that represent our descendants in question. It is also potentially recursive since,
+	// given the inputs, can call itself from within its own logic.
 	public static AncestralTree checkAncestor(AncestralTree a, AncestralTree b) {
 		
+		// 4. We check to see if the ancestor of descendant 'a' equals the ancestor of descendant 'b'. If they do, it means we have found the youngest common ancestor, and as a
+		// result...
 		if(a.ancestor == b.ancestor) {
-			System.out.println(a.ancestor.name);
+			
+			// ...we return the ancestor (since they are equal, it does not matter if 'a' or 'b's ancestor is returned). In the easiest case, using our ancestral tree above, if
+			// one descendant equals 'D' and the other is 'E', both share the ancestor 'B'. Thus 'B' would be returned.
 			return a.ancestor;
 		}
 		
+		// 5. We then check to see if descendant 'a' is equal to the ancestor of descendant 'b'. If it is, then we have found the youngest common ancestor, and as a result...
 		if(a == b.ancestor){
-			System.out.println(a.name);
+			
+			// ...we return 'a'. An example of this using our ancestral tree above would be if one descendant is 'C' and the other is 'F'. Since the ancestor of 'F' IS 'C', we 
+			// would return 'C' since 'C' is it's own ancestor and is therefore the youngest common ancestor between the two.
 			return a;
 		}
 		
+		// 6. We then check to see if descendant 'a' is equal to the ancestor of descendant 'b'. If it is, then we have found the youngest common ancestor, and as a result...
 		if(b == a.ancestor){
-			System.out.println(b.name);
+			
+			// ...we would return 'b'. Again, this is just inverse of the case above, the same logic would follow. 
 			return b;
 		}
 		
+		// 7. If we pass all the previous conditionals, then we know are descendants are distant from each other. Since the 'name' of each descendant is stored as a character,
+		// a character has a numeric value in Java. Thus, we can compare the values of these characters to see which character is the larger of the two, first checking to see if
+		// a's character value is greater than 'b's. Given our example inputs. since 'I' has a greater value than 'E', being higher in alphabetical order...
 		if(a.name > b.name) {
-			System.out.println(a.name);
-			System.out.println(b.name);
+			
+			// ...we return the result of our function called recursively, making the 'a's ancestor and 'b' as the two descendants. Our function will run again, but this time
+			// the ancestor of 'a' will be compared with 'b' since the ancestor of any descendant will be a character value less than itself. Again using our example, we would 
+			// call our function on the ancestor of 'a' which is 'B'. As a result, 'B' would be returned since now both 'D' and 'E' share a common ancestor in 'B'.
 			return checkAncestor(a.ancestor, b);
+			
+		// 8. Otherwise, we check if the opposite is true, and if it is...	
 		} else {
-			System.out.println(a.name);
-			System.out.println(b.name);
+			
+			// ...we return the result of our function called recursively, only this time 'a' is one parameter and 'b's ancestor is the other parameter.
 			return checkAncestor(a, b.ancestor);
 		}
 	
 	}
+	
 
 	static class AncestralTree {
 		public char name;

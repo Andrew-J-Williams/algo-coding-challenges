@@ -42,8 +42,20 @@ import java.util.*;
 public class RiverSizes {
 
 	public static List<Integer> riverSizes(int[][] matrix) {
-		// Write your code here.
-		return new ArrayList<Integer>();
+
+		List<Integer> sizes = new ArrayList<>();
+
+		boolean[][] matrix2 = new boolean[matrix.length][matrix[0].length];
+		
+		for(int i = 0; i < matrix.length; i++) {
+			for(int k = 0; k < matrix[i].length; k++) {
+				int current = matrix[i][k];
+				
+				
+			}
+		}
+
+		return sizes;
 	}
 
 	public static void main(String[] args) {

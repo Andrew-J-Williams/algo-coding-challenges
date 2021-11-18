@@ -97,7 +97,64 @@ public class YoungestCommonAncestor {
 		}
 	
 	}
+
+// After finding this solution, I came to the realization that if these AncestralTree nodes accepted a name that wasn't a char, say instead a String, then this solution above will
+// not work. As a result, while I will leave the solution above as the main solution, below is the alternative solution provided by AlgoExpert:
 	
+/*
+ * 
+	public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, AncestralTree descendantOne, AncestralTree descendantTwo) {
+	
+		int depth1 = getDescendantDepth(descendantOne, topAncestor);
+		int depth2 = getDescendantDepth(descendantTwo, topAncestor);
+	
+		if(depth1 > depth2){
+		
+			return backtrackAncestralTree(descendantOne, descendantTwo, depth1 - depth2);
+		 
+		} else {
+		
+			return backtrackAncestralTree(descendantTwo, descendantOne, depth2 - depth1);
+		 
+		}
+	
+	}
+	
+	public static int getDescendantDepth(AncestralTree descendant, AncestralTree topAncestor){
+	
+		int depth = 0;
+		
+		while(descendant != topAncestor){
+			depth++;
+			descendant = descendant.ancestor;
+		}
+	
+		return depth;
+		
+	}
+
+ 	public static AncestralTree backtrackAncestralTree(AncestralTree lowerDescendant, AncestralTree higherDescendant, int diff){
+ 	
+ 		while(diff > 0) {
+ 		
+ 			lowerDescendant = lowerDescendant.ancestor;
+ 			diff--;
+ 		
+ 		}
+ 		
+ 		while(lowerDescendant != higherDescendant) {
+ 		
+ 			lowerDescendant = lowerDescendant.ancestor;
+ 			higherDescendant = higherDescendant.ancestor;
+ 		
+ 		}
+ 		
+ 		return lowerDescendant;
+ 	
+ 	}
+ 
+ * 	
+ */
 
 	static class AncestralTree {
 		public char name;

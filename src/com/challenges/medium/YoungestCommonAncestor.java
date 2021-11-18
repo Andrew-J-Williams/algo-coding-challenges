@@ -2,8 +2,7 @@ package com.challenges.medium;
 
 public class YoungestCommonAncestor {
 
-	public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, AncestralTree descendantOne,
-			AncestralTree descendantTwo) {
+	public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, AncestralTree descendantOne, AncestralTree descendantTwo) {
 		// Write your code here.
 		return topAncestor; // Replace this line
 	}
@@ -26,7 +25,7 @@ public class YoungestCommonAncestor {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		AncestralTree top = new AncestralTree('A');
 
 	}
 

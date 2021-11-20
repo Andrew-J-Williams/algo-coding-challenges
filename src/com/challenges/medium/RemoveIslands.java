@@ -56,6 +56,7 @@ public class RemoveIslands {
 
 	public static int[][] removeIslands(int[][] matrix) {
 		
+		boolean[][] visited = new boolean[matrix.length][matrix[0].length];
 		
 		return new int[][] { {} };
 	}

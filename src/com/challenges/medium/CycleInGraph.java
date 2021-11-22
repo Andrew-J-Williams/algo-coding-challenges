@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import java.util.*;
+
 /*
  * 
 	Cycle In Graph
@@ -46,9 +48,14 @@ package com.challenges.medium;
 public class CycleInGraph {
 
 	public static boolean cycleInGraph(int[][] edges) {
-		// Write your code here.
+
+		int[] visited = new int[edges.length];
+		int[] inStack = new int[edges.length];
+		
 		return false;
 	}
+	
+
 
 	public static void main(String[] args) {
 		int[][] edges1 = { {1, 3}, {2, 3, 4}, {0}, {}, {2, 5}, {} };

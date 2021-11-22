@@ -49,9 +49,51 @@ public class CycleInGraph {
 
 	public static boolean cycleInGraph(int[][] edges) {
 
-		int[] visited = new int[edges.length];
-		int[] inStack = new int[edges.length];
+		boolean[] visited = new boolean[edges.length];
+		boolean[] inStack = new boolean[edges.length];
 		
+		for(int i = 0; i < edges.length; i++) {
+			
+			if(visited[i]) {
+				continue;
+			}
+			
+			boolean containsCycle = nodeIsInCycle(i, edges, visited, inStack);
+			
+			if(containsCycle) {
+				return true;
+			}
+			
+		}
+		
+		
+		return false;
+	}
+	
+	public static boolean nodeIsInCycle(int i, int[][] edges, boolean[] visited, boolean[] inStack) {
+		
+		visited[i] = true;
+		inStack[i] = true;
+		
+		boolean containsCycle = false;
+		
+		int[] neighbors = edges[i];
+		
+		for(int neighbor : neighbors) {
+			
+			if(!visited[neighbor]) {
+				containsCycle = nodeIsInCycle(neighbor, edges, visited, inStack);
+			}
+			
+			if(containsCycle) {
+				return true;
+			} else if(inStack[neighbor]) {
+				return true;
+			}
+			
+		}
+		
+		inStack[i] = false;
 		return false;
 	}
 	

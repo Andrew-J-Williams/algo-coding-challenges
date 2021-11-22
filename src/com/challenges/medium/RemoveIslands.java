@@ -99,9 +99,72 @@ public class RemoveIslands {
 	
 	public static void connectedToBorder(int startRow, int startCol, int[][] matrix, boolean[][] edge) {
 		
+		Stack<int[]> stack = new Stack<>();
+		stack.push(new int[] {startRow, startCol});
+		
+		while(!stack.isEmpty()) {
+			
+			int[] position = stack.pop();
+			int currentRow = position[0];
+			int currentCol = position[1];
+			
+			boolean alreadyVisited = edge[currentRow][currentCol];
+			
+			if(alreadyVisited) {
+				continue;
+			}
+			
+			edge[currentRow][currentCol] = true;
+			
+			int[][] neighbors = getNeighbors(currentRow, currentCol, matrix);
+			
+			for(int[] neighbor : neighbors) {
+				
+				int row = neighbor[0];
+				int col = neighbor[1];
+				
+				if(matrix[row][col] != 1) {
+					continue;
+				}
+				
+				stack.push(neighbor);
+			}
+			
+		}
 		
 		
+	}
+	
+	public static int[][] getNeighbors(int row, int col, int[][] matrix){
 		
+		int numRows = matrix.length;
+		int numCols = matrix[row].length;
+		
+		List<int[]> temp = new ArrayList<>();
+		
+		if(row - 1 >= 0) {
+			temp.add(new int[] {row - 1, col});
+		}
+		
+		if(row + 1 < numRows) {
+			temp.add(new int[] {row + 1, col});
+		}
+		
+		if(col - 1 >= 0) {
+			temp.add(new int[] {row, col - 1});
+		}
+		
+		if(col + 1 < numCols) {
+			temp.add(new int[] {row, col + 1});
+		}
+		
+		int[][] neighbors = new int[temp.size()][2];
+		
+		for(int i = 0; i < temp.size(); i++) {
+			neighbors[i] = temp.get(i);
+		}
+		
+		return neighbors;
 	}
 	
 

@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import java.util.*;
+
 /*
  * 
 	Remove Islands
@@ -57,10 +59,39 @@ public class RemoveIslands {
 	public static int[][] removeIslands(int[][] matrix) {
 		
 		boolean[][] visited = new boolean[matrix.length][matrix[0].length];
+		boolean[][] edge = new boolean[matrix.length][matrix[0].length];
 		
-		// Sunday Funday
+		for(int i = 0; i < matrix.length; i++) {
+			for(int k = 0; k < matrix[0].length; k++) {
+				
+				if(visited[i][k]) {
+					continue;
+				}
+				
+				
+				
+			}
+		}
 		
-		return new int[][] { {} };
+		
+		return matrix;
+	}
+	
+	public static void checkNode(int i, int k, int[][] value, boolean[][] visited, boolean[][] edge) {
+		
+		Stack<Integer[]> nodesToExplore = new Stack<Integer[]>();
+		
+		nodesToExplore.push(new Integer[] {i, k});
+		
+		while(!nodesToExplore.isEmpty()) {
+			
+			Integer[] currentNode = nodesToExplore.pop();
+			
+			i = currentNode[0];
+			k = currentNode[k];
+			
+		}
+		
 	}
 
 	public static void main(String[] args) {

@@ -58,41 +58,52 @@ public class RemoveIslands {
 
 	public static int[][] removeIslands(int[][] matrix) {
 		
-		boolean[][] visited = new boolean[matrix.length][matrix[0].length];
+		
 		boolean[][] edge = new boolean[matrix.length][matrix[0].length];
 		
 		for(int i = 0; i < matrix.length; i++) {
-			for(int k = 0; k < matrix[0].length; k++) {
+			edge[i][matrix[0].length - 1] = false;
+		}
+		
+		for(int row = 0; row < matrix.length; row++) {
+			for(int col = 0; col < matrix[0].length; col++) {
 				
-				if(visited[i][k]) {
+				boolean rowIsBorder = row == 0 || row == matrix.length - 1;
+				boolean colIsBorder = col == 0 || col == matrix[0].length - 1;
+				boolean isBorder = rowIsBorder || colIsBorder;
+				
+				if(!isBorder) {
 					continue;
 				}
 				
+				if(matrix[row][col] != 1) {
+					continue;
+				}
 				
-				
+				connectedToBorder(row, col, matrix, edge);
 			}
 		}
 		
 		
+		for(int row = 1; row < matrix.length; row++) {
+			for(int col = 1; col < matrix[0].length; col++) {
+				if(edge[row][col]) {
+					continue;
+				}
+				
+				matrix[row][col] = 0;
+			}
+		}
 		return matrix;
 	}
 	
-	public static void checkNode(int i, int k, int[][] value, boolean[][] visited, boolean[][] edge) {
+	public static void connectedToBorder(int startRow, int startCol, int[][] matrix, boolean[][] edge) {
 		
-		Stack<Integer[]> nodesToExplore = new Stack<Integer[]>();
 		
-		nodesToExplore.push(new Integer[] {i, k});
 		
-		while(!nodesToExplore.isEmpty()) {
-			
-			Integer[] currentNode = nodesToExplore.pop();
-			
-			i = currentNode[0];
-			k = currentNode[k];
-			
-		}
 		
 	}
+	
 
 	public static void main(String[] args) {
 		int[][] matrix = { {1, 0, 0, 0, 0, 0}, {0, 1, 0, 1, 1, 1}, {0, 0, 1, 0, 1, 0}, {1, 1, 0, 0, 1, 0}, {1, 0, 1, 1, 0, 0}, {1, 0, 0, 0, 0, 1}};

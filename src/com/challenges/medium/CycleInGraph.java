@@ -96,6 +96,9 @@ public class CycleInGraph {
 		// 11. We create a 'for' loop that will iterate over every element in the 'neighbors' array..
 		for(int neighbor : neighbors) {
 			
+			System.out.println("Neighbor: " + neighbor);
+			System.out.println("Visited[neighbor]: " + visited[neighbor]);
+			
 			// 12. If the given element we are checking is not found in our 'visited' array...
 			if(!visited[neighbor]) {
 				

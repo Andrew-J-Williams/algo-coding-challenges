@@ -152,10 +152,14 @@ public class MinPassesOfMatrix {
 		return -1;
 	}
 	
-	// 20. Our 
+	// 20. Our second helper method, 'checkNeighbors', takes in 3 parameters: 'i' and 'k' integer values along with our input matrix.
 	public static boolean checkNeighbors(int i, int k, int[][] matrix) {
 		
+		// 21. Like the previous algorithms that check all adjacent elements, our function will see if the values of 'i' or 'k' remain
+		// within the bounds of the matrix and are positive values. If both conditions are true...
 		if(i > 0 && matrix[i - 1][k] > 0) {
+			
+			// ...we return true right away to indicate at least one adjacent element is a positive value.
 			return true;
 		}
 		
@@ -171,6 +175,8 @@ public class MinPassesOfMatrix {
 			return true;
 		}
 		
+		// 22. If we check all adjacent neighbors and cannot find a positive value, we return false to indicate a conversion cannot happen
+		// on this given pass.
 		return false;
 	}
 

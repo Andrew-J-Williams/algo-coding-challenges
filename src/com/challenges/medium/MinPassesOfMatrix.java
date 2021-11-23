@@ -1,5 +1,7 @@
 package com.challenges.medium;
 
+import java.util.*;
+
 /*
  * 
 	Minimum Number of Passes
@@ -33,16 +35,97 @@ package com.challenges.medium;
 public class MinPassesOfMatrix {
 
 	public static int minimumPassesOfMatrix(int[][] matrix) {
-		// Write your code here.
+
+		int result = findNegatives(matrix, 0);
+		
+		return result;
+	}
+	
+	public static int findNegatives(int[][] matrix, int passes) {
+		
+		List<Integer> positives = new ArrayList<>();
+		List<Integer> negatives = new ArrayList<>();
+		List<int[]> negativePairs = new ArrayList<>();
+		int count = 0;
+		
+		for(int i = 0; i < matrix.length; i++) {
+			for(int k = 0; k < matrix[i].length; k++) {
+				
+				if(matrix[i][k] >= 0) {
+					positives.add(matrix[i][k]);
+					count++;
+					continue;
+				}
+				
+				boolean current = checkNeighbors(i, k, matrix);
+				
+				if(current && matrix[i][k] < 0) {
+					negatives.add(matrix[i][k]);
+					negativePairs.add(new int[] {i, k});
+				} else if(matrix[i][k] < 0) {
+					negatives.add(matrix[i][k]);
+				}
+				
+				count++;
+			}
+		}
+		
+		System.out.println("Total Numbers: " + count);
+		System.out.println(positives);
+		System.out.println(negatives);
+		System.out.println(negativePairs);
+		
+		if(positives.size() == count) {
+			return passes;
+		}
+		
+		for(int[] negative : negativePairs) {
+			int i = negative[0];
+			int k = negative[1];
+			
+			matrix[i][k] *= -1;
+		}
+		
+		System.out.println(Arrays.toString(matrix[0]));
+		System.out.println(Arrays.toString(matrix[1]));
+		System.out.println(Arrays.toString(matrix[2]));
+		
+		if(negatives.size() == 0) {
+			return passes;
+		} else if(negatives.size() > 0 && negatives.size() >= negativePairs.size()) {
+			return findNegatives(matrix, passes + 1);
+		}
+		
 		return -1;
 	}
 	
-	public static void
+	public static boolean checkNeighbors(int i, int k, int[][] matrix) {
+		
+		if(i > 0 && matrix[i - 1][k] > 0) {
+			return true;
+		}
+		
+		if(i < matrix.length - 1 && matrix[i + 1][k] > 0) {
+			return true;
+		}
+		
+		if(k > 0 && matrix[i][k - 1] > 0) {
+			return true;
+		}
+		
+		if(k < matrix[i].length - 1 && matrix[i][k + 1] > 0) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	public static void main(String[] args) {
 		int[][] matrix = { {0, -1, -3, 2, 0}, {1, -2, -5, -1, -3}, {3, 0, 0, -4, -1}};
+		int[][] matrix2 = { {0, -2, -1}, {-5, 2, 0}, {-6, -2, 0} };
+		int[][] matrix3 = { {1} };
 
-		System.out.println(minimumPassesOfMatrix(matrix));
+		System.out.println(minimumPassesOfMatrix(matrix3));
 	}
 
 }

@@ -36,12 +36,12 @@ public class MinPassesOfMatrix {
 
 	public static int minimumPassesOfMatrix(int[][] matrix) {
 
-		int result = findNegatives(matrix, 0);
+		int result = findNegatives(matrix, 0, 0);
 		
 		return result;
 	}
 	
-	public static int findNegatives(int[][] matrix, int passes) {
+	public static int findNegatives(int[][] matrix, int passes, int total) {
 		
 		List<Integer> positives = new ArrayList<>();
 		List<Integer> negatives = new ArrayList<>();
@@ -69,13 +69,8 @@ public class MinPassesOfMatrix {
 				count++;
 			}
 		}
-		
-		System.out.println("Total Numbers: " + count);
-		System.out.println(positives);
-		System.out.println(negatives);
-		System.out.println(negativePairs);
-		
-		if(positives.size() == count) {
+
+		if(positives.size() == count && negatives.size() == 0) {
 			return passes;
 		}
 		
@@ -86,14 +81,10 @@ public class MinPassesOfMatrix {
 			matrix[i][k] *= -1;
 		}
 		
-		System.out.println(Arrays.toString(matrix[0]));
-		System.out.println(Arrays.toString(matrix[1]));
-		System.out.println(Arrays.toString(matrix[2]));
-		
 		if(negatives.size() == 0) {
 			return passes;
-		} else if(negatives.size() > 0 && negatives.size() >= negativePairs.size()) {
-			return findNegatives(matrix, passes + 1);
+		} else if(negatives.size() > 0 && negatives.size() != total) {
+			return findNegatives(matrix, passes + 1, negatives.size());
 		}
 		
 		return -1;
@@ -125,7 +116,7 @@ public class MinPassesOfMatrix {
 		int[][] matrix2 = { {0, -2, -1}, {-5, 2, 0}, {-6, -2, 0} };
 		int[][] matrix3 = { {1} };
 
-		System.out.println(minimumPassesOfMatrix(matrix3));
+		System.out.println(minimumPassesOfMatrix(matrix));
 	}
 
 }

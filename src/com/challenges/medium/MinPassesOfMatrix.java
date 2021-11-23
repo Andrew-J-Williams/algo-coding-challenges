@@ -62,10 +62,11 @@ public class MinPassesOfMatrix {
 				if(current && matrix[i][k] < 0) {
 					negatives.add(matrix[i][k]);
 					negativePairs.add(new int[] {i, k});
-				} else if(matrix[i][k] < 0) {
-					negatives.add(matrix[i][k]);
-				}
-				
+					count++;
+					continue;
+				} 
+					
+				negatives.add(matrix[i][k]);
 				count++;
 			}
 		}
@@ -81,9 +82,7 @@ public class MinPassesOfMatrix {
 			matrix[i][k] *= -1;
 		}
 		
-		if(negatives.size() == 0) {
-			return passes;
-		} else if(negatives.size() > 0 && negatives.size() != total) {
+		if(negatives.size() > 0 && negatives.size() != total) {
 			return findNegatives(matrix, passes + 1, negatives.size());
 		}
 		

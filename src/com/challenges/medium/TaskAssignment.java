@@ -9,6 +9,8 @@ import java.util.*;
 	Sample Input:
 	
 	Sample Output: 
+	
+	GO BUCKEYES!
  * 
  */
 

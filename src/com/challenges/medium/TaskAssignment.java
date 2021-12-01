@@ -10,7 +10,6 @@ import java.util.*;
 	
 	Sample Output: 
 	
-	GO BUCKEYES!
  * 
  */
 

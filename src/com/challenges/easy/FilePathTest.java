@@ -6,19 +6,26 @@ import java.util.Scanner;
 
 public class FilePathTest {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args){
 
-		File text = new File("");
-		System.out.println("Absolute Path: ");
+		try {
+			File text = new File("test.txt");
+			System.out.println("Absolute Path: " + text.getAbsolutePath());
+			System.out.println("File Size: " + text.length());
+			System.out.println(" "); 
 		
-		Scanner scnr = new Scanner(text);
+			Scanner scnr = new Scanner(text);
 		
-		int lineNumber = 1;
+			int lineNumber = 1;
 		
-		while(scnr.hasNextLine()) {
-			String line = scnr.nextLine();
-			System.out.println("line " + lineNumber + ":" + line);
-			lineNumber++;
+			while(scnr.hasNextLine()) {
+				String line = scnr.nextLine();
+				System.out.println("line " + lineNumber + ":" + line);
+				lineNumber++;
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
 		}
 
 	}

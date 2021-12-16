@@ -21,7 +21,6 @@ public class FilePathTest {
 			System.out.println("Path Absolute Path: " + path.toAbsolutePath());
 			System.out.println("Absolute Path: " + text.getPath());
 			System.out.println("File Size: " + text.length());
-			System.out.println(" "); 
 		
 			/*
 			FileReader fileStream = new FileReader(text);

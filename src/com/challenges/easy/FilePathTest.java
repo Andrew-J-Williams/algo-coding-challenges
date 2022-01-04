@@ -14,13 +14,17 @@ public class FilePathTest {
 	public static void main(String[] args){
 
 		Path path = Paths.get("CLI Review.docx"); 
-		File text = new File("");
+		String text = "/nmlstage/clmsktp/docroot/doc";
+		File textFile = new File("Y:/nmlstage/clmsktp/docroot/doc");
+		System.out.println(text.contains("/nmlstage"));
+		text = text.replace("/nmlstage", "");
 		System.out.println(text);
+		System.out.println(text.contains("/nmlstage"));
 		
 		
-			System.out.println("Path Absolute Path: " + path.toAbsolutePath());
-			System.out.println("Absolute Path: " + text.getPath());
-			System.out.println("File Size: " + text.length());
+			//System.out.println("Path Absolute Path: " + path.toAbsolutePath());
+			//System.out.println("Absolute Path: " + text.getPath());
+			//System.out.println("File Size: " + text.length());
 		
 			/*
 			FileReader fileStream = new FileReader(text);
